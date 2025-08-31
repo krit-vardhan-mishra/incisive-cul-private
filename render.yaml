@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: incisive-cul
+    env: node
+    repo: https://github.com/krit-vardhan-mishra/incisive-cul-private
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SITE_NAME
+        value: Incisive-Cul
+    healthCheckPath: /

@@ -1,20 +1,24 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { usePathname } from 'next/navigation'
-import { useRef } from 'react'
+import { useRef, forwardRef, useImperativeHandle } from 'react'
 
 interface StairsProps {
     children: React.ReactNode;
 }
 
-const Stairs = (props: StairsProps) => {
+export interface StairsRef {
+    playAnimation: () => void;
+}
+
+const Stairs = forwardRef<StairsRef, StairsProps>((props, ref) => {
 
     const currentPath = usePathname();
 
     const stairParentRef = useRef(null)
     const pageRef = useRef(null)
 
-    useGSAP(function () {
+    const playAnimation = () => {
         const tl = gsap.timeline()
         tl.to(stairParentRef.current, {
             display: 'block',
@@ -43,6 +47,14 @@ const Stairs = (props: StairsProps) => {
             delay: 1.3,
             scale: 1.2
         })
+    };
+
+    useImperativeHandle(ref, () => ({
+        playAnimation
+    }));
+
+    useGSAP(function () {
+        playAnimation();
     }, [currentPath])
 
 
@@ -62,6 +74,8 @@ const Stairs = (props: StairsProps) => {
             </div>
         </div>
     )
-}
+});
+
+Stairs.displayName = 'Stairs';
 
 export default Stairs

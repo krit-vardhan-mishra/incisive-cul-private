@@ -2,13 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { SectionProps } from '@/types/animations';
 
-interface IntroductionSectionProps {
-  textVariants: any;
-  staggerContainer: any;
-}
-
-const IntroductionSection: React.FC<IntroductionSectionProps> = ({ textVariants, staggerContainer }) => {
+const IntroductionSection: React.FC<SectionProps> = ({ textVariants, staggerContainer }) => {
   return (
     <section className="py-16 lg:py-24">
       <div className="container mx-auto px-6">
@@ -61,10 +57,10 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({ textVariants,
                 INCISIVE
               </span>
               , we believe that questioning the purpose of learning—whether
-              it's for a career or the sake of knowledge itself, is an
+              it&apos;s for a career or the sake of knowledge itself, is an
               enriching endeavor. This distinction is often unreasonable as the
               two paths are deeply interwoven- learning is not just a means to
-              an end; it's a{' '}
+              an end; it&apos;s a{' '}
               <span className="font-bold text-blue-400">
                 journey that empowers individuals
               </span>{' '}

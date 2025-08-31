@@ -7,7 +7,6 @@ import WhyWeExistSection from "./sections/WhyWeExistSection";
 import WhatMakesUsDifferentSection from "./sections/WhatMakesUsDifferentSection";
 import LearningVerticalsSection from "./sections/LearningVerticalsSection";
 import IntegratedJourneySection from "./sections/IntegratedJourneySection";
-import './HeroSection.module.css';
 import BeIncisiveSection from "./sections/BeIncisiveSection";
 
 const HeroSection: React.FC = () => {

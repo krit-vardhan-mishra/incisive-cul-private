@@ -6,8 +6,14 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
+import { StairsRef } from '@/components/animation/Stairs';
 
-const Header = ({ stairsRef, triggerStairsAnimation }: any) => {
+interface HeaderProps {
+  stairsRef: React.RefObject<StairsRef | null>;
+  triggerStairsAnimation?: () => void; // Made optional since it's not used
+}
+
+const Header: React.FC<HeaderProps> = ({ stairsRef }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const pathname = usePathname();
@@ -36,7 +42,7 @@ const Header = ({ stairsRef, triggerStairsAnimation }: any) => {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const handleLinkClick = (e: any, href: any) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
     // If we're already on the target page, don't animate

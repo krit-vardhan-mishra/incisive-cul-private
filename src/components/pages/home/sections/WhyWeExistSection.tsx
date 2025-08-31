@@ -3,13 +3,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useStairsNavigation } from '@/hooks/useStairsNavigation';
+import { SectionProps } from '@/types/animations';
 
-interface WhyWeExistSectionProps {
-  textVariants: any;
-  staggerContainer: any;
-}
-
-const WhyWeExistSection: React.FC<WhyWeExistSectionProps> = ({ textVariants, staggerContainer }) => {
+const WhyWeExistSection: React.FC<SectionProps> = ({ textVariants, staggerContainer }) => {
   const { navigateWithStairs } = useStairsNavigation();
   return (
     <section className="relative h-auto md:h-screen flex flex-col md:flex-row items-center justify-start p-0">
@@ -45,7 +41,7 @@ const WhyWeExistSection: React.FC<WhyWeExistSectionProps> = ({ textVariants, sta
               variants={textVariants}
               className="text-lg md:text-xl leading-relaxed text-gray-200 drop-shadow-md"
             >
-              Most students finish school or college with good marks but little clarity. They have studied the syllabus but haven't learned how to think or apply what they know. They may have degrees, but still feel unsure about what to do next.{' '}
+              Most students finish school or college with good marks but little clarity. They have studied the syllabus but haven&apos;t learned how to think or apply what they know. They may have degrees, but still feel unsure about what to do next.{' '}
               <span className="font-bold bg-blue-400 bg-clip-text text-transparent">
                 INCISIVE
               </span>{' '}

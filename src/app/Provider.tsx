@@ -3,13 +3,13 @@
 import { useRef, useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Header from "@/components/Header";
-import Stairs from "@/components/animation/Stairs";
+import Stairs, { StairsRef } from "@/components/animation/Stairs";
 import LandingPage from "@/components/LandingPage";
 import Footer from "@/components/Footer";
 import { NavigationContext } from "@/hooks/useStairsNavigation";
 
 export default function Provider({ children }: { children: React.ReactNode }) {
-  const stairsRef = useRef<any>(null);
+  const stairsRef = useRef<StairsRef>(null);
   const [showLanding, setShowLanding] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPath, setCurrentPath] = useState('');

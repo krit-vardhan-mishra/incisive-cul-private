@@ -91,7 +91,7 @@ const ChallengeCarousel = ({ textVariants }: any) => {
             y: 0,
             transition: {
                 duration: 0.8,
-                ease: [0.42, 0, 0.58, 1],
+                ease: "easeInOut" as const,
                 staggerChildren: 0.3
             }
         }

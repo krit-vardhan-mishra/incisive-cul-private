@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+eval $(ssh-agent -s)
+eval $(ssh-agent -s).pub

@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Incisive-Cul Website
 
-## Getting Started
+A modern, responsive website for the Center for Unlearning and Learning, built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Live Demo
+[Visit Website](https://your-domain.com) *(Update with actual URL)*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **Modern Design**: Clean, professional interface with smooth animations
+- **Responsive**: Optimized for all devices and screen sizes
+- **Fast Performance**: Static generation and optimized assets
+- **SEO Optimized**: Proper meta tags and structured data
+- **Accessible**: Built with accessibility best practices
+- **Interactive Animations**: Powered by Framer Motion and GSAP
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15.5.2
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion, GSAP
+- **Icons**: Lucide React
+- **Fonts**: Google Fonts (Inter, Geist)
+
+## 📁 Project Structure
+
+```
+├── src/
+│   ├── app/                    # App Router pages and layouts
+│   ├── components/             # Reusable UI components
+│   ├── hooks/                  # Custom React hooks
+│   └── types/                  # TypeScript type definitions
+├── public/                     # Static assets (images, videos)
+├── .env.example               # Environment variables template
+└── DEPLOYMENT.md              # Deployment guide
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd incisive-cul-private
+```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
+```bash
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📜 Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript checks
+
+## 🎨 Pages
+
+### ✅ Complete Pages
+- **Home** - Main landing page with interactive sections
+- **Vision & Philosophy** - Detailed mission and values
+- **Legal Notice** - Legal information and terms
+- **Privacy Policy** - Privacy and data protection
+
+### 🚧 Development Ready
+- **About Me** - Personal background (content pending)
+- **Contact** - Contact information and forms (content pending)
+- **Featured Works** - Portfolio showcase (content pending)
+- **Learning Verticals** - Educational programs (content pending)
+
+## 🔧 Configuration
+
+### Environment Variables
+```env
+NODE_ENV=production
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+NEXT_PUBLIC_SITE_NAME="Incisive-Cul"
+```
+
+### Tailwind CSS
+Custom configuration includes:
+- Custom screen breakpoints
+- Extended color palette
+- Custom font families
+
+## 📱 Responsive Design
+
+- **Mobile First**: Optimized for mobile devices
+- **Tablet**: Enhanced layout for tablet screens
+- **Desktop**: Full-featured desktop experience
+- **Large Screens**: Optimized for wide displays
+
+## 🎭 Animations
+
+- **Page Transitions**: Smooth transitions between pages
+- **Scroll Animations**: Content reveals on scroll
+- **Interactive Elements**: Hover and click animations
+- **Loading States**: Engaging loading animations
+
+## 🔒 Security Features
+
+- XSS protection headers
+- Content Security Policy
+- Secure referrer policy
+- Frame protection
+
+## 🚀 Deployment
+
+The project is optimized for deployment on:
+- **Vercel** (recommended)
+- **Netlify**
+- **AWS Amplify**
+- **Traditional hosting**
+
+See `DEPLOYMENT.md` for detailed deployment instructions.
+
+## 📊 Performance
+
+- **Lighthouse Score**: Optimized for performance
+- **Core Web Vitals**: Meets Google's standards
+- **Bundle Size**: Optimized for fast loading
+- **Image Optimization**: WebP/AVIF support
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests and lint
+5. Submit a pull request
+
+## 📄 License
+
+This project is private and proprietary.
+
+## 📞 Contact
+
+For questions or support, please contact:
+- Email: incisive-cul@gmail.com
+- Website: [Incisive-Cul](https://your-domain.com)
+
+---
+
+**Built with ❤️ for transformative learning**

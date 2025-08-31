@@ -117,7 +117,7 @@ const PrivacyPolicyPage = () => {
                             <h2 className="text-2xl font-semibold text-[#5d7aa1]">Contact Us</h2>
                         </div>
                         <p className="text-gray-300 leading-relaxed">
-                            If you have any questions about our Privacy Policy, please don't hesitate to contact us at:
+                            If you have any questions about our Privacy Policy, please don&apos;t hesitate to contact us at:
                             <br />
                             <a
                                 href="mailto:incisive-cul@gmail.com"

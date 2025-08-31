@@ -2,11 +2,16 @@
   "name": "incisive-cul-private",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16.20.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build --no-lint",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

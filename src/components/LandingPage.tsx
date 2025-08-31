@@ -3,7 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, Variants } from "framer-motion";
 
-export default function LandingPage({ onAnimationComplete }: any) {
+interface LandingPageProps {
+    onAnimationComplete: () => void;
+}
+
+export default function LandingPage({ onAnimationComplete }: LandingPageProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isAnimating, setIsAnimating] = useState(true);
 
