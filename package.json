@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=18.18.0",
-    "npm": ">=8.0.0"
+    "node": ">=20.18.0",
+    "npm": ">=10.0.0"
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --no-lint",
+    "build": "npm install && next build",
     "start": "next start",
     "lint": "eslint",
     "type-check": "tsc --noEmit"
@@ -21,7 +21,8 @@
     "next": "15.5.2",
     "react": "^19.1.0",
     "react-dom": "19.1.0",
-    "react-intersection-observer": "^9.16.0"
+    "react-intersection-observer": "^9.16.0",
+    "typescript": "^5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -30,7 +31,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.2",
-    "typescript": "^5"
+    "eslint-config-next": "15.5.2"
   }
 }
