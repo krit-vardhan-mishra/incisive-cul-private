@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* Base colors */
+:root {
+  --clr-dark-a0: #000000;
+  --clr-light-a0: #ffffff;
+
+  /* Theme primary colors */
+  --clr-primary-a0: #010d24;
+  --clr-primary-a10: #1c2439;
+  --clr-primary-a20: #353b4e;
+  --clr-primary-a30: #4f5465;
+  --clr-primary-a40: #6a6e7d;
+  --clr-primary-a50: #868996;
+
+  /* Theme surface colors */
+  --clr-surface-a0: #021630;
+  --clr-surface-a10: #203450;
+  --clr-surface-a20: #3a4a64;
+  --clr-surface-a30: #546179;
+  --clr-surface-a40: #6f798e;
+  --clr-surface-a50: #8a92a4;
+
+  /* Theme tonal surface colors */
+  --clr-surface-tonal-a0: #031730;
+  --clr-surface-tonal-a10: #1e2c44;
+  --clr-surface-tonal-a20: #384259;
+  --clr-surface-tonal-a30: #525a6f;
+  --clr-surface-tonal-a40: #6c7485;
+  --clr-surface-tonal-a50: #888e9d;
+}
+
+/* Example utility */
+.bg-primary {
+  background-color: var(--clr-surface-a0);
+  color: var(--clr-primary-a50);
+}
+
+/* Custom breakpoint utilities for 1100px */
+@media (min-width: 1100px) {
+  .custom-1100\:flex {
+    display: flex;
+  }
+
+  .custom-1100\:hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 1099px) {
+  .max-custom-1100\:flex {
+    display: flex;
+  }
+
+  .max-custom-1100\:hidden {
+    display: none;
+  }
+}
+
+.animated-svg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinGrow 3s ease-in-out forwards;
+  z-index: 1000;
+}
+
+@keyframes spinGrow {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2) rotate(360deg);
+    opacity: 0;
+  }
+}
