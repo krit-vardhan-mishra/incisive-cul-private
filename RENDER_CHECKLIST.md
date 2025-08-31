@@ -7,7 +7,7 @@ Your Incisive-Cul project is **100% ready** for deployment on Render.com. Here's
 ### ✅ **Build Configuration**
 - [x] **Build Command**: `npm ci && npm run build` 
 - [x] **Start Command**: `npm start`
-- [x] **Node Version**: Specified in `.node-version` (16.20.0)
+- [x] **Node Version**: Specified in `.node-version` (18.18.0)
 - [x] **Package Engines**: Defined in `package.json`
 - [x] **Production Build**: Successfully tested ✓
 
