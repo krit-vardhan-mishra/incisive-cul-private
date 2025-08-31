@@ -41,3 +41,8 @@ yarn-error.log*
 next-env.d.ts
 eval $(ssh-agent -s)
 eval $(ssh-agent -s).pub
+
+tsconfig.json
+/tsconfig.json
+.tsconfig.json
+tsconfig.json/
