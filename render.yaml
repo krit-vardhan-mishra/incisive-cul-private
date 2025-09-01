@@ -3,7 +3,7 @@ services:
     name: incisive-cul
     env: node
     repo: https://github.com/krit-vardhan-mishra/incisive-cul-private
-    buildCommand: npm ci && npm run build
+    buildCommand: npm install && npm run build
     startCommand: npm start
     plan: free
     runtime: node
