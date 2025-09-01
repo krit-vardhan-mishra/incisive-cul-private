@@ -101,8 +101,8 @@ export default function FeaturedWorksPage() {
     return (
         <div className="min-h-screen bg-gray-900 text-white">
             {/* Hero Section */}
-            <section className="relative py-20 px-6">
-                <div className="max-w-6xl mx-auto mt-4 text-center">
+            <section className="relative py-20 px-6 bg-gray-900">
+                <div className="max-w-7xl mx-auto mt-4 text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -125,6 +125,25 @@ export default function FeaturedWorksPage() {
                         </div>
                     </motion.div>
                 </div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.3 }} className="text-center max-w-7xl mx-auto">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mt-10">
+                        Areas of Interest:
+                    </h2>
+                    <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                        Higher Education, Integrated Learning, Political Theory, Indian Politics, Sociology of Caste, History, Film Studies
+                    </p>
+                </motion.div>
+
+                <motion.hr 
+                    className="border-gray-700 mt-20 my-8 max-w-7xl mx-auto" 
+                    initial={{ width: 0 }} 
+                    animate={{ width: "100%" }} 
+                    transition={{ duration: 0.8, delay: 0.7 }} 
+                />
             </section>
 
             {/* Featured Works Grid */}
@@ -235,7 +254,7 @@ export default function FeaturedWorksPage() {
                             Watch our featured lectures and discussions right here on the site.
                         </p>
                     </motion.div>
-                    
+
                     <motion.div
                         variants={containerVariants}
                         initial="hidden"

@@ -106,7 +106,7 @@ export default function AppointmentBooking() {
         {
             id: 'project-collaboration',
             name: 'Create Project Collaboration',
-            description: 'Book review, Visual content production (Video/Documentary/Photography/Journal), Content Editing, Community Outreach, Event planning + Organization, Digital Strategy and Marketing.',
+            description: 'Book review, Visual content production (Video / Documentary / Photography / Journal), Content Editing, Community Outreach, Event planning + Organization, Digital Strategy and Marketing.',
             duration: '15 m'
         },
         {
@@ -277,13 +277,13 @@ export default function AppointmentBooking() {
 
     return (
         <motion.div
-            className="max-w-4xl mx-auto"
+            className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
         >
             <motion.h2
-                className="text-3xl font-bold text-center mb-12 text-white"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12 text-white"
                 variants={itemVariants}
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -296,7 +296,7 @@ export default function AppointmentBooking() {
             <AnimatePresence>
                 {navigationError && (
                     <motion.div
-                        className="mb-6 p-4 bg-red-900/50 border border-red-700 rounded-lg"
+                        className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-900/50 border border-red-700 rounded-lg mx-2 sm:mx-0"
                         initial={{ opacity: 0, scale: 0.9, y: -10 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: -10 }}
@@ -307,51 +307,87 @@ export default function AppointmentBooking() {
                 )}
             </AnimatePresence>
 
-            {/* Steps Indicator */}
+            {/* Steps Indicator - Mobile Optimized */}
             <motion.div
-                className="flex flex-wrap justify-center gap-4 mb-12"
+                className="mb-8 sm:mb-12"
                 variants={itemVariants}
             >
-                {steps.map((step, index) => (
-                    <motion.div
-                        key={step}
-                        className="flex items-center"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.1 * index }}
-                    >
+                {/* Mobile: Vertical Steps */}
+                <div className="block sm:hidden space-y-2">
+                    {steps.map((step, index) => (
                         <motion.button
+                            key={step}
                             onClick={() => handleStepClick(index)}
-                            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${index === currentStep
-                                ? 'bg-blue-600 text-white'
-                                : index < currentStep
-                                    ? 'bg-green-600 text-white hover:bg-green-500'
-                                    : canAccessStep(index)
-                                        ? 'bg-gray-600 text-gray-300 hover:bg-gray-500 cursor-pointer'
-                                        : 'bg-gray-700 text-gray-500 cursor-not-allowed'
-                                }`}
+                            className={`w-full flex items-center justify-between p-3 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                                index === currentStep
+                                    ? 'bg-blue-600 text-white'
+                                    : index < currentStep
+                                        ? 'bg-green-600 text-white'
+                                        : canAccessStep(index)
+                                            ? 'bg-gray-600 text-gray-300'
+                                            : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                            }`}
                             disabled={!canAccessStep(index) && index !== currentStep}
-                            whileHover={{ scale: canAccessStep(index) || index === currentStep ? 1.05 : 1 }}
-                            whileTap={{ scale: canAccessStep(index) || index === currentStep ? 0.95 : 1 }}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 * index }}
                         >
-                            {index + 1}. {step}
+                            <span>{index + 1}. {step}</span>
+                            {index < currentStep && (
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                            )}
                         </motion.button>
-                        {index < steps.length - 1 && (
-                            <motion.div
-                                className={`hidden md:block w-8 h-0.5 mx-2 transition-all duration-300 ${index < currentStep ? 'bg-green-600' : 'bg-gray-600'
+                    ))}
+                </div>
+
+                {/* Desktop/Tablet: Horizontal Steps */}
+                <div className="hidden sm:flex flex-wrap justify-center gap-2 lg:gap-4">
+                    {steps.map((step, index) => (
+                        <motion.div
+                            key={step}
+                            className="flex items-center"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.1 * index }}
+                        >
+                            <motion.button
+                                onClick={() => handleStepClick(index)}
+                                className={`px-3 py-2 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-semibold transition-all duration-300 ${
+                                    index === currentStep
+                                        ? 'bg-blue-600 text-white'
+                                        : index < currentStep
+                                            ? 'bg-green-600 text-white hover:bg-green-500'
+                                            : canAccessStep(index)
+                                                ? 'bg-gray-600 text-gray-300 hover:bg-gray-500 cursor-pointer'
+                                                : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                                }`}
+                                disabled={!canAccessStep(index) && index !== currentStep}
+                                whileHover={{ scale: canAccessStep(index) || index === currentStep ? 1.05 : 1 }}
+                                whileTap={{ scale: canAccessStep(index) || index === currentStep ? 0.95 : 1 }}
+                            >
+                                <span className="hidden lg:inline">{index + 1}. {step}</span>
+                                <span className="lg:hidden">{index + 1}</span>
+                            </motion.button>
+                            {index < steps.length - 1 && (
+                                <motion.div
+                                    className={`w-4 lg:w-8 h-0.5 mx-1 lg:mx-2 transition-all duration-300 ${
+                                        index < currentStep ? 'bg-green-600' : 'bg-gray-600'
                                     }`}
-                                initial={{ scaleX: 0 }}
-                                animate={{ scaleX: 1 }}
-                                transition={{ duration: 0.5, delay: 0.2 * index }}
-                            />
-                        )}
-                    </motion.div>
-                ))}
+                                    initial={{ scaleX: 0 }}
+                                    animate={{ scaleX: 1 }}
+                                    transition={{ duration: 0.5, delay: 0.2 * index }}
+                                />
+                            )}
+                        </motion.div>
+                    ))}
+                </div>
             </motion.div>
 
             {/* Content Container */}
             <motion.div
-                className="bg-gray-800/50 p-8 rounded-xl border border-gray-700 min-h-[500px]"
+                className="bg-gray-800/50 p-4 sm:p-6 lg:p-8 rounded-xl border border-gray-700 min-h-[400px] sm:min-h-[500px]"
                 variants={itemVariants}
                 layout
             >
@@ -360,14 +396,14 @@ export default function AppointmentBooking() {
                     {currentStep === 0 && (
                         <motion.div
                             key="service-selection"
-                            className="space-y-6"
+                            className="space-y-4 sm:space-y-6"
                             variants={stepTransition}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
                         >
                             <motion.h3
-                                className="text-xl font-semibold mb-6 text-white"
+                                className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-white"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -390,10 +426,11 @@ export default function AppointmentBooking() {
                                 <motion.div
                                     key={service.id}
                                     onClick={() => handleServiceSelect(service)}
-                                    className={`p-6 rounded-lg border cursor-pointer transition-all duration-200 ${appointmentData.service?.id === service.id
-                                        ? 'border-blue-400 bg-blue-900/30'
-                                        : 'border-gray-600 bg-gray-700/50 hover:border-gray-500'
-                                        }`}
+                                    className={`p-4 sm:p-6 rounded-lg border cursor-pointer transition-all duration-200 ${
+                                        appointmentData.service?.id === service.id
+                                            ? 'border-blue-400 bg-blue-900/30'
+                                            : 'border-gray-600 bg-gray-700/50 hover:border-gray-500'
+                                    }`}
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.2 }}
@@ -401,13 +438,13 @@ export default function AppointmentBooking() {
                                     whileTap={{ scale: 0.98 }}
                                 >
                                     <motion.h4
-                                        className="text-lg font-semibold mb-3 text-blue-300"
+                                        className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-blue-300"
                                         layoutId={`service-title-${service.id}`}
                                     >
                                         {service.name}
                                     </motion.h4>
                                     <motion.p
-                                        className="text-gray-300 mb-4 leading-relaxed"
+                                        className="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 leading-relaxed"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         transition={{ duration: 0.5, delay: 0.2 * index }}
@@ -416,7 +453,7 @@ export default function AppointmentBooking() {
                                     </motion.p>
                                     <div className="flex justify-between items-center">
                                         <motion.span
-                                            className="font-semibold text-blue-400"
+                                            className="text-sm sm:text-base font-semibold text-blue-400"
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                             transition={{ duration: 0.5, delay: 0.3 * index }}
@@ -426,13 +463,13 @@ export default function AppointmentBooking() {
                                         <AnimatePresence>
                                             {appointmentData.service?.id === service.id && (
                                                 <motion.div
-                                                    className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center"
+                                                    className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-500 rounded-full flex items-center justify-center"
                                                     initial={{ scale: 0, rotate: -180 }}
                                                     animate={{ scale: 1, rotate: 0 }}
                                                     exit={{ scale: 0, rotate: 180 }}
                                                     transition={{ type: "spring", stiffness: 200 }}
                                                 >
-                                                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                                     </svg>
                                                 </motion.div>
@@ -448,14 +485,14 @@ export default function AppointmentBooking() {
                     {currentStep === 1 && (
                         <motion.div
                             key="date-time-selection"
-                            className="space-y-8"
+                            className="space-y-6 sm:space-y-8"
                             variants={stepTransition}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
                         >
                             <motion.h3
-                                className="text-xl font-semibold text-white"
+                                className="text-lg sm:text-xl font-semibold text-white"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -470,7 +507,7 @@ export default function AppointmentBooking() {
                                 transition={{ duration: 0.5, delay: 0.2 }}
                             >
                                 <motion.h4
-                                    className="text-lg font-semibold mb-4 text-white"
+                                    className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ duration: 0.5, delay: 0.3 }}
@@ -490,7 +527,7 @@ export default function AppointmentBooking() {
                                     )}
                                 </AnimatePresence>
                                 <motion.div
-                                    className="grid grid-cols-2 md:grid-cols-4 gap-3"
+                                    className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-3"
                                     variants={containerVariants}
                                     initial="hidden"
                                     animate="visible"
@@ -501,10 +538,11 @@ export default function AppointmentBooking() {
                                             <motion.button
                                                 key={dateStr}
                                                 onClick={() => handleDateSelect(dateStr)}
-                                                className={`p-3 rounded-lg text-sm transition-all duration-200 ${appointmentData.date === dateStr
-                                                    ? 'bg-blue-600 text-white'
-                                                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                                                    }`}
+                                                className={`p-2 sm:p-3 rounded-lg text-xs sm:text-sm transition-all duration-200 ${
+                                                    appointmentData.date === dateStr
+                                                        ? 'bg-blue-600 text-white'
+                                                        : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                                                }`}
                                                 initial={{ opacity: 0, scale: 0.8 }}
                                                 animate={{ opacity: 1, scale: 1 }}
                                                 transition={{ duration: 0.2 }}
@@ -530,7 +568,7 @@ export default function AppointmentBooking() {
                                 transition={{ duration: 0.5, delay: 0.4 }}
                             >
                                 <motion.h4
-                                    className="text-lg font-semibold mb-4 text-white"
+                                    className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ duration: 0.5, delay: 0.5 }}
@@ -550,7 +588,7 @@ export default function AppointmentBooking() {
                                     )}
                                 </AnimatePresence>
                                 <motion.div
-                                    className="grid grid-cols-4 md:grid-cols-6 gap-3"
+                                    className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-3"
                                     variants={containerVariants}
                                     initial="hidden"
                                     animate="visible"
@@ -559,10 +597,11 @@ export default function AppointmentBooking() {
                                         <motion.button
                                             key={time}
                                             onClick={() => handleTimeSelect(time)}
-                                            className={`p-2 rounded-lg text-sm transition-all duration-200 ${appointmentData.time === time
-                                                ? 'bg-blue-600 text-white'
-                                                : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                                                }`}
+                                            className={`p-2 rounded-lg text-xs sm:text-sm transition-all duration-200 ${
+                                                appointmentData.time === time
+                                                    ? 'bg-blue-600 text-white'
+                                                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                                            }`}
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ duration: 0.2, delay: index * 0.05 }}
@@ -581,14 +620,14 @@ export default function AppointmentBooking() {
                     {currentStep === 2 && (
                         <motion.div
                             key="basic-details"
-                            className="space-y-6"
+                            className="space-y-4 sm:space-y-6"
                             variants={stepTransition}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
                         >
                             <motion.h3
-                                className="text-xl font-semibold text-white"
+                                className="text-lg sm:text-xl font-semibold text-white"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -597,7 +636,7 @@ export default function AppointmentBooking() {
                             </motion.h3>
 
                             <motion.div
-                                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6"
                                 variants={containerVariants}
                                 initial="hidden"
                                 animate="visible"
@@ -621,7 +660,7 @@ export default function AppointmentBooking() {
                                             type={input.type}
                                             value={appointmentData.userDetails[input.field as keyof AppointmentData['userDetails']]}
                                             onChange={(e) => handleUserDetailsChange(input.field as keyof AppointmentData['userDetails'], e.target.value)}
-                                            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-all duration-200"
+                                            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-all duration-200 text-sm sm:text-base"
                                             placeholder={input.placeholder}
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
@@ -650,7 +689,7 @@ export default function AppointmentBooking() {
                     {currentStep === 3 && (
                         <motion.div
                             key="summary"
-                            className="space-y-6"
+                            className="space-y-4 sm:space-y-6"
                             variants={stepTransition}
                             initial="hidden"
                             animate="visible"
@@ -660,14 +699,14 @@ export default function AppointmentBooking() {
                             <AnimatePresence>
                                 {showSuccessAnimation && animationData && (
                                     <motion.div
-                                        className="flex justify-center mb-6"
+                                        className="flex justify-center mb-4 sm:mb-6"
                                         initial={{ opacity: 0, scale: 0.5 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.5 }}
                                         transition={{ duration: 0.5 }}
                                     >
                                         <motion.div
-                                            className="bg-gray-800/90 p-6 rounded-xl border border-gray-700 max-w-sm w-full"
+                                            className="bg-gray-800/90 p-4 sm:p-6 rounded-xl border border-gray-700 max-w-sm w-full mx-4"
                                             initial={{ y: -50 }}
                                             animate={{ y: 0 }}
                                             transition={{ type: "spring", stiffness: 200 }}
@@ -676,10 +715,11 @@ export default function AppointmentBooking() {
                                                 <Lottie
                                                     animationData={animationData}
                                                     loop={false}
-                                                    style={{ height: 150, width: 150, margin: '0 auto' }}
+                                                    style={{ height: 120, width: 120, margin: '0 auto' }}
+                                                    className="sm:h-[150px] sm:w-[150px]"
                                                 />
                                                 <motion.h3
-                                                    className="text-lg font-semibold text-white mt-3"
+                                                    className="text-base sm:text-lg font-semibold text-white mt-3"
                                                     initial={{ opacity: 0 }}
                                                     animate={{ opacity: 1 }}
                                                     transition={{ delay: 0.5 }}
@@ -701,7 +741,7 @@ export default function AppointmentBooking() {
                             </AnimatePresence>
 
                             <motion.h3
-                                className="text-xl font-semibold text-white"
+                                className="text-lg sm:text-xl font-semibold text-white"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -720,7 +760,7 @@ export default function AppointmentBooking() {
                                     transition={{ duration: 0.5, delay: 0.2 }}
                                 >
                                     <motion.div
-                                        className="bg-gray-700/50 p-6 rounded-lg border border-gray-600"
+                                        className="bg-gray-700/50 p-4 sm:p-6 rounded-lg border border-gray-600"
                                         whileHover={{ scale: 1.01 }}
                                         transition={{ duration: 0.2 }}
                                     >
@@ -731,28 +771,28 @@ export default function AppointmentBooking() {
                                             animate="visible"
                                         >
                                             <motion.div variants={itemVariants}>
-                                                <h4 className="font-semibold text-blue-300 mb-2">Service</h4>
-                                                <p className="text-gray-300">{appointmentData.service?.name}</p>
-                                                <p className="text-sm text-gray-400">{appointmentData.service?.description}</p>
+                                                <h4 className="font-semibold text-blue-300 mb-2 text-sm sm:text-base">Service</h4>
+                                                <p className="text-gray-300 text-sm sm:text-base">{appointmentData.service?.name}</p>
+                                                <p className="text-xs sm:text-sm text-gray-400 mt-1">{appointmentData.service?.description}</p>
                                             </motion.div>
 
                                             <motion.div
-                                                className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                                                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                                                 variants={itemVariants}
                                             >
                                                 <div>
-                                                    <h4 className="font-semibold text-blue-300 mb-2">Date</h4>
-                                                    <p className="text-gray-300">{formatDate(appointmentData.date)}</p>
+                                                    <h4 className="font-semibold text-blue-300 mb-2 text-sm sm:text-base">Date</h4>
+                                                    <p className="text-gray-300 text-sm sm:text-base">{formatDate(appointmentData.date)}</p>
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-semibold text-blue-300 mb-2">Time</h4>
-                                                    <p className="text-gray-300">{appointmentData.time}</p>
+                                                    <h4 className="font-semibold text-blue-300 mb-2 text-sm sm:text-base">Time</h4>
+                                                    <p className="text-gray-300 text-sm sm:text-base">{appointmentData.time}</p>
                                                 </div>
                                             </motion.div>
 
                                             <motion.div variants={itemVariants}>
-                                                <h4 className="font-semibold text-blue-300 mb-2">Contact Information</h4>
-                                                <div className="text-gray-300 space-y-1">
+                                                <h4 className="font-semibold text-blue-300 mb-2 text-sm sm:text-base">Contact Information</h4>
+                                                <div className="text-gray-300 space-y-1 text-sm sm:text-base">
                                                     <p><strong>Name:</strong> {appointmentData.userDetails.name}</p>
                                                     <p><strong>Email:</strong> {appointmentData.userDetails.email}</p>
                                                     <p><strong>Phone:</strong> {appointmentData.userDetails.phone}</p>
@@ -761,19 +801,19 @@ export default function AppointmentBooking() {
                                             </motion.div>
 
                                             <motion.div variants={itemVariants}>
-                                                <h4 className="font-semibold text-blue-300 mb-2">Duration</h4>
-                                                <p className="text-gray-300">{appointmentData.service?.duration}</p>
+                                                <h4 className="font-semibold text-blue-300 mb-2 text-sm sm:text-base">Duration</h4>
+                                                <p className="text-gray-300 text-sm sm:text-base">{appointmentData.service?.duration}</p>
                                             </motion.div>
                                         </motion.div>
                                     </motion.div>
 
                                     <motion.div
-                                        className="bg-blue-900/30 p-4 rounded-lg border border-blue-700"
+                                        className="bg-blue-900/30 p-3 sm:p-4 rounded-lg border border-blue-700"
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: 0.4 }}
                                     >
-                                        <p className="text-blue-200 text-sm">
+                                        <p className="text-blue-200 text-xs sm:text-sm">
                                             📧 You will receive a confirmation email with the meeting link shortly after booking.
                                         </p>
                                     </motion.div>
@@ -786,7 +826,7 @@ export default function AppointmentBooking() {
                                     transition={{ duration: 0.5, delay: 0.2 }}
                                 >
                                     <motion.div
-                                        className="bg-gray-700/50 p-6 rounded-lg border border-gray-600"
+                                        className="bg-gray-700/50 p-4 sm:p-6 rounded-lg border border-gray-600"
                                         whileHover={{ scale: 1.01 }}
                                     >
                                         <motion.div
@@ -796,7 +836,7 @@ export default function AppointmentBooking() {
                                             animate="visible"
                                         >
                                             <motion.div
-                                                className="text-4xl mb-4"
+                                                className="text-3xl sm:text-4xl mb-4"
                                                 variants={itemVariants}
                                                 initial={{ scale: 0, rotate: -180 }}
                                                 animate={{ scale: 1, rotate: 0 }}
@@ -805,19 +845,19 @@ export default function AppointmentBooking() {
                                                 📅
                                             </motion.div>
                                             <motion.h4
-                                                className="text-lg font-semibold text-blue-300"
+                                                className="text-base sm:text-lg font-semibold text-blue-300"
                                                 variants={itemVariants}
                                             >
                                                 Your Scheduled Appointments
                                             </motion.h4>
                                             <motion.p
-                                                className="text-gray-300"
+                                                className="text-gray-300 text-sm sm:text-base"
                                                 variants={itemVariants}
                                             >
                                                 You don't have any upcoming appointments scheduled.
                                             </motion.p>
                                             <motion.p
-                                                className="text-sm text-gray-400"
+                                                className="text-xs sm:text-sm text-gray-400"
                                                 variants={itemVariants}
                                             >
                                                 Complete the booking process to schedule a new appointment.
@@ -826,12 +866,12 @@ export default function AppointmentBooking() {
                                     </motion.div>
 
                                     <motion.div
-                                        className="bg-green-900/30 p-4 rounded-lg border border-green-700"
+                                        className="bg-green-900/30 p-3 sm:p-4 rounded-lg border border-green-700"
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: 0.4 }}
                                     >
-                                        <p className="text-green-200 text-sm">
+                                        <p className="text-green-200 text-xs sm:text-sm">
                                             💡 <strong>Tip:</strong> Click on the other steps to start booking a new appointment.
                                         </p>
                                     </motion.div>
@@ -843,7 +883,7 @@ export default function AppointmentBooking() {
 
                 {/* Navigation Buttons */}
                 <motion.div
-                    className="flex justify-between items-center mt-8 pt-6 border-t border-gray-600"
+                    className="flex flex-col sm:flex-row justify-between items-center mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-600 gap-3 sm:gap-0"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
@@ -851,10 +891,11 @@ export default function AppointmentBooking() {
                     <motion.button
                         onClick={handleBack}
                         disabled={currentStep === 0}
-                        className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${currentStep === 0
-                            ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                            : 'bg-gray-600 text-white hover:bg-gray-500'
-                            }`}
+                        className={`w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
+                            currentStep === 0
+                                ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                : 'bg-gray-600 text-white hover:bg-gray-500'
+                        }`}
                         whileHover={currentStep !== 0 ? { scale: 1.05 } : {}}
                         whileTap={currentStep !== 0 ? { scale: 0.95 } : {}}
                     >
@@ -864,7 +905,7 @@ export default function AppointmentBooking() {
                     {currentStep < steps.length - 1 ? (
                         <motion.button
                             onClick={handleNext}
-                            className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-200"
+                            className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-200 text-sm sm:text-base"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -875,7 +916,7 @@ export default function AppointmentBooking() {
                         appointmentData.service && appointmentData.date && appointmentData.time && appointmentData.userDetails.name ? (
                             <motion.button
                                 onClick={handleSubmit}
-                                className="px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all duration-200"
+                                className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all duration-200 text-sm sm:text-base"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 initial={{ opacity: 0, scale: 0.8 }}
@@ -887,7 +928,7 @@ export default function AppointmentBooking() {
                         ) : (
                             <motion.button
                                 onClick={() => handleStepClick(0)}
-                                className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-200"
+                                className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-200 text-sm sm:text-base"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >

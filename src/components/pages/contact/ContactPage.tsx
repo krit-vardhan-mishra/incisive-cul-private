@@ -114,25 +114,25 @@ const ContactPage = () => {
         <div ref={containerRef} className="min-h-screen text-white bg-gray-900">
             {/* Hero Section */}
             <motion.section 
-                className="relative py-20 px-6 overflow-hidden"
+                className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 overflow-hidden"
                 style={{ y }}
             >
-                {/* Background Pattern */}
+                {/* Background Pattern - Responsive positioning */}
                 <div className="absolute inset-0 opacity-5">
-                    <div className="absolute top-20 left-10 w-40 h-40 border border-blue-400 rounded-full"></div>
-                    <div className="absolute top-60 right-20 w-32 h-32 border border-purple-400 rounded-full"></div>
-                    <div className="absolute bottom-40 left-1/3 w-48 h-48 border border-blue-400 rounded-full"></div>
+                    <div className="absolute top-10 sm:top-20 left-4 sm:left-10 w-20 sm:w-32 lg:w-40 h-20 sm:h-32 lg:h-40 border border-blue-400 rounded-full"></div>
+                    <div className="absolute top-32 sm:top-60 right-8 sm:right-20 w-16 sm:w-24 lg:w-32 h-16 sm:h-24 lg:h-32 border border-purple-400 rounded-full"></div>
+                    <div className="absolute bottom-20 sm:bottom-40 left-1/4 sm:left-1/3 w-24 sm:w-36 lg:w-48 h-24 sm:h-36 lg:h-48 border border-blue-400 rounded-full"></div>
                 </div>
 
-                <div className="max-w-6xl mx-auto mt-4 text-center relative">
+                <div className="max-w-6xl mx-auto mt-2 sm:mt-4 text-center relative">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="mb-16"
+                        className="mb-8 sm:mb-12 lg:mb-16"
                     >
                         <motion.h1 
-                            className='text-5xl md:text-7xl m-8 font-extrabold bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent'
+                            className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl m-4 sm:m-6 lg:m-8 font-extrabold bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent'
                             initial={{ opacity: 0, y: -30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.1 }}
@@ -141,18 +141,18 @@ const ContactPage = () => {
                         </motion.h1>
 
                         <motion.blockquote
-                            className="text-xl md:text-2xl font-light text-gray-300 italic max-w-4xl mx-auto relative"
+                            className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-gray-300 italic max-w-4xl mx-auto relative px-4 sm:px-0"
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
                         >
-                            <span className="text-4xl text-blue-400 absolute -top-4 -left-4">"</span>
+                            <span className="text-2xl sm:text-3xl lg:text-4xl text-blue-400 absolute -top-2 sm:-top-4 -left-2 sm:-left-4">"</span>
                             Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.
-                            <span className="text-4xl text-blue-400 p-2">"</span>
+                            <span className="text-2xl sm:text-3xl lg:text-4xl text-blue-400 p-2">"</span>
                         </motion.blockquote>
                         
                         <motion.div 
-                            className="font-sans text-lg mt-6 text-right max-w-4xl mx-auto"
+                            className="font-sans text-sm sm:text-base lg:text-lg mt-4 sm:mt-6 text-right max-w-4xl mx-auto px-4 sm:px-0"
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6, delay: 0.7 }}
@@ -165,7 +165,7 @@ const ContactPage = () => {
 
             {/* Social Media Section */}
             <motion.section 
-                className="py-16 px-6"
+                className="py-12 sm:py-16 px-4 sm:px-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
@@ -173,22 +173,22 @@ const ContactPage = () => {
             >
                 <div className="max-w-6xl mx-auto">
                     <motion.div 
-                        className="text-center mb-12"
+                        className="text-center mb-8 sm:mb-12"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
                             Connect With Us
                         </h2>
-                        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+                        <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-0">
                             Follow our journey and stay updated with the latest insights, resources, and community discussions
                         </p>
                     </motion.div>
 
                     <motion.div 
-                        className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-4xl mx-auto"
+                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 max-w-4xl mx-auto"
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
@@ -200,7 +200,7 @@ const ContactPage = () => {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`group relative p-6 rounded-2xl bg-gradient-to-br ${link.color} ${link.hoverColor} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl`}
+                                className={`group relative p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br ${link.color} ${link.hoverColor} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl`}
                                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                                 transition={{ duration: 0.5, delay: 0.1 * index }}
@@ -209,11 +209,11 @@ const ContactPage = () => {
                                 whileTap={{ scale: 0.95 }}
                             >
                                 <div className="text-center">
-                                    <link.icon className="w-8 h-8 text-white mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-                                    <h3 className="text-white font-semibold text-sm">{link.label}</h3>
+                                    <link.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white mx-auto mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300" />
+                                    <h3 className="text-white font-semibold text-xs sm:text-sm">{link.label}</h3>
                                 </div>
-                                <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <ExternalLink className="absolute top-2 right-2 w-4 h-4 text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="absolute inset-0 bg-white/10 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <ExternalLink className="absolute top-2 right-2 w-3 h-3 sm:w-4 sm:h-4 text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </motion.a>
                         ))}
                     </motion.div>
@@ -222,16 +222,16 @@ const ContactPage = () => {
 
             {/* Contact Form Section */}
             <motion.section 
-                className="relative py-16 px-6"
+                className="relative py-12 sm:py-16 px-4 sm:px-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
             >
-                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+                <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start">
                     {/* Contact Form */}
                     <motion.div
-                        className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 shadow-2xl"
+                        className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm p-6 sm:p-8 rounded-xl sm:rounded-2xl border border-gray-700/50 shadow-2xl order-2 lg:order-1"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
@@ -243,11 +243,11 @@ const ContactPage = () => {
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-3xl font-bold text-white mb-2">Get in touch</h3>
-                            <p className="text-gray-300 mb-8">Ready to start your journey? Let's connect and explore how we can help you grow.</p>
+                            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Get in touch</h3>
+                            <p className="text-gray-300 mb-6 sm:mb-8 text-sm sm:text-base">Ready to start your journey? Let's connect and explore how we can help you grow.</p>
                         </motion.div>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                             {[
                                 { id: 'name', label: 'Full Name', type: 'text', placeholder: 'Enter your full name' },
                                 { id: 'email', label: 'Email Address', type: 'email', placeholder: 'Enter your email address' },
@@ -268,7 +268,7 @@ const ContactPage = () => {
                                         id={field.id}
                                         value={formData[field.id as keyof typeof formData] as string}
                                         onChange={(e) => handleInputChange(field.id, e.target.value)}
-                                        className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 text-sm sm:text-base"
                                         placeholder={field.placeholder}
                                         whileFocus={{ scale: 1.02 }}
                                         transition={{ duration: 0.2 }}
@@ -300,7 +300,7 @@ const ContactPage = () => {
                                     rows={4}
                                     value={formData.message}
                                     onChange={(e) => handleInputChange('message', e.target.value)}
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 resize-none"
+                                    className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 resize-none text-sm sm:text-base"
                                     placeholder="Tell us about your goals, questions, or how we can help you..."
                                     whileFocus={{ scale: 1.02 }}
                                     transition={{ duration: 0.2 }}
@@ -332,7 +332,7 @@ const ContactPage = () => {
                                     className="mt-1 w-4 h-4 rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500 focus:ring-2"
                                     whileTap={{ scale: 0.9 }}
                                 />
-                                <label htmlFor="consent" className="text-sm text-gray-400 leading-relaxed">
+                                <label htmlFor="consent" className="text-xs sm:text-sm text-gray-400 leading-relaxed">
                                     I hereby agree that this data will be stored and processed for the purpose of establishing contact. I am aware that I can revoke my consent at any time. <span className="text-red-400">*</span>
                                 </label>
                             </motion.div>
@@ -348,7 +348,7 @@ const ContactPage = () => {
                             )}
 
                             <motion.div 
-                                className="text-sm text-gray-500"
+                                className="text-xs sm:text-sm text-gray-500"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ duration: 0.5, delay: 0.5 }}
@@ -360,7 +360,7 @@ const ContactPage = () => {
                             <motion.button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full py-4 text-lg font-semibold rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed transition-all duration-300 text-white shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                                className="w-full py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed transition-all duration-300 text-white shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: 0.6 }}
@@ -370,13 +370,13 @@ const ContactPage = () => {
                             >
                                 {isSubmitting ? (
                                     <motion.div
-                                        className="w-6 h-6 border-2 border-white border-t-transparent rounded-full"
+                                        className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-white border-t-transparent rounded-full"
                                         animate={{ rotate: 360 }}
                                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                                     />
                                 ) : (
                                     <>
-                                        <Send className="w-5 h-5" />
+                                        <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                                         <span>Send Message</span>
                                     </>
                                 )}
@@ -386,7 +386,7 @@ const ContactPage = () => {
 
                     {/* Contact Information */}
                     <motion.div
-                        className="space-y-8"
+                        className="space-y-6 sm:space-y-8 order-1 lg:order-2"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
@@ -394,19 +394,19 @@ const ContactPage = () => {
                     >
                         {/* Office Hours */}
                         <motion.div 
-                            className="backdrop-blur-sm p-6 rounded-2xl border border-gray-700/30"
+                            className="backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-700/30"
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <div className="flex items-center mb-4">
-                                <Clock className="w-6 h-6 text-blue-400 mr-3" />
-                                <h3 className="text-2xl font-bold text-white">Office Hours</h3>
+                            <div className="flex items-center mb-3 sm:mb-4">
+                                <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mr-3" />
+                                <h3 className="text-xl sm:text-2xl font-bold text-white">Office Hours</h3>
                             </div>
                             <div className="space-y-2">
-                                <p className="text-gray-300 text-lg">
+                                <p className="text-gray-300 text-base sm:text-lg">
                                     <span className="font-semibold text-blue-400">Mon - Fri:</span> 04:00 pm - 07:15 pm
                                 </p>
-                                <p className="text-gray-300 text-lg">
+                                <p className="text-gray-300 text-base sm:text-lg">
                                     <span className="font-semibold text-blue-400">Sat - Sun:</span> Closed
                                 </p>
                             </div>
@@ -414,50 +414,50 @@ const ContactPage = () => {
 
                         {/* Contact Details */}
                         <motion.div 
-                            className="backdrop-blur-sm p-6 rounded-2xl border border-gray-700/30"
+                            className="backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-700/30"
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <div className="flex items-center mb-4">
-                                <MapPin className="w-6 h-6 text-purple-400 mr-3" />
-                                <h3 className="text-2xl font-bold text-white">Contact Details</h3>
+                            <div className="flex items-center mb-3 sm:mb-4">
+                                <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 mr-3" />
+                                <h3 className="text-xl sm:text-2xl font-bold text-white">Contact Details</h3>
                             </div>
-                            <div className="space-y-4">
+                            <div className="space-y-3 sm:space-y-4">
                                 <motion.p 
-                                    className="text-lg text-gray-300 flex items-center"
+                                    className="text-sm sm:text-base lg:text-lg text-gray-300 flex items-center flex-wrap sm:flex-nowrap"
                                     whileHover={{ x: 5 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <Phone className="w-4 h-4 text-purple-400 mr-2" />
-                                    <span className="font-semibold text-purple-400">Phone:</span>
-                                    <span className="ml-2">9289 284 370</span>
+                                    <Phone className="w-4 h-4 text-purple-400 mr-2 flex-shrink-0" />
+                                    <span className="font-semibold text-purple-400 mr-2">Phone:</span>
+                                    <span>9289 284 370</span>
                                 </motion.p>
                                 <motion.p 
-                                    className="text-lg text-gray-300 flex items-center"
+                                    className="text-sm sm:text-base lg:text-lg text-gray-300 flex items-center flex-wrap sm:flex-nowrap"
                                     whileHover={{ x: 5 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <MailIcon className="w-4 h-4 text-purple-400 mr-2" />
-                                    <span className="font-semibold text-purple-400">Email:</span>
-                                    <a href="mailto:ricky_is_cool@gmail.com" className="ml-2 hover:underline hover:text-purple-300 transition-colors">
+                                    <MailIcon className="w-4 h-4 text-purple-400 mr-2 flex-shrink-0" />
+                                    <span className="font-semibold text-purple-400 mr-2">Email:</span>
+                                    <a href="mailto:ricky_is_cool@gmail.com" className="hover:underline hover:text-purple-300 transition-colors break-all sm:break-normal">
                                         ricky_is_cool@gmail.com
                                     </a>
                                 </motion.p>
                                 <motion.p 
-                                    className="text-lg text-gray-300 flex items-start"
+                                    className="text-sm sm:text-base lg:text-lg text-gray-300 flex items-start"
                                     whileHover={{ x: 5 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <MapPin className="w-4 h-4 text-purple-400 mr-2 mt-1" />
-                                    <span className="font-semibold text-purple-400">Address:</span>
-                                    <span className="ml-2">Jakhan, Rajpur Road, Dehradun</span>
+                                    <MapPin className="w-4 h-4 text-purple-400 mr-2 mt-1 flex-shrink-0" />
+                                    <span className="font-semibold text-purple-400 mr-2">Address:</span>
+                                    <span>Jakhan, Rajpur Road, Dehradun</span>
                                 </motion.p>
                             </div>
                         </motion.div>
 
                         {/* Map Section */}
                         <motion.div
-                            className="rounded-2xl overflow-hidden shadow-2xl border border-gray-700"
+                            className="rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-gray-700"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
@@ -483,7 +483,7 @@ const ContactPage = () => {
 
             {/* Schedule Section */}
             <motion.section
-                className="py-16 px-4"
+                className="py-12 sm:py-16 px-4"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
