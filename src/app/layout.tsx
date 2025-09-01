@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Provider from './Provider';
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,6 +23,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Incisive-Cul",
   description: "Center for Unlearning and Learning",
+  icons: {
+    icon: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -39,6 +43,7 @@ export default function RootLayout({
             {children}
           </div>
         </Provider>
+        <Analytics />
       </body>
     </html>
   );
