@@ -13,5 +13,5 @@ services:
       - key: NEXT_PUBLIC_SITE_NAME
         value: Incisive-Cul
       - key: PORT
-        value: 3000
+        value: 10000
     healthCheckPath: /

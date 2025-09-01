@@ -26,6 +26,9 @@ const nextConfig = {
   // Output configuration for better deployment
   output: undefined, // Use default server mode
 
+  // Ensure proper handling in production
+  poweredByHeader: false,
+
   // Security headers
   async headers() {
     return [

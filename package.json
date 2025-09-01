@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "npm install && next build",
-    "start": "next start -p %PORT% || next start -p 3000",
+    "start": "next start -p $PORT || next start -p 10000",
     "lint": "eslint",
     "type-check": "tsc --noEmit"
   },
