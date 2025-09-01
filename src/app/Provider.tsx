@@ -25,39 +25,36 @@ export default function Provider({ children }: { children: React.ReactNode }) {
     setCurrentPath(pathname);
   }, [pathname]);
 
-  // Trigger stairs animation on route change
   useEffect(() => {
-    if (currentPath && currentPath !== pathname && !showLanding && !isLoading) {
-      // Small delay to ensure the new page is ready
+    if (currentPath &&
+        currentPath !== pathname &&
+        !showLanding &&
+        !isLoading) {
+
       const timer = setTimeout(() => {
         if (stairsRef.current) {
           stairsRef.current.playAnimation();
         }
       }, 50);
-      
+
       setCurrentPath(pathname);
-      
+
       return () => clearTimeout(timer);
     }
-  }, [pathname, currentPath, showLanding, isLoading]);
-
-  const handleLandingComplete = () => {
+  }, [pathname, currentPath, showLanding, isLoading]);  const handleLandingComplete = () => {
     sessionStorage.setItem('hasSeenLanding', 'true');
     setShowLanding(false);
   };
 
-  // Function to manually trigger stairs animation
   const triggerStairsAnimation = () => {
     if (stairsRef.current && !showLanding && !isLoading) {
       stairsRef.current.playAnimation();
     }
   };
 
-  // Function to navigate with stairs animation
   const navigateWithStairs = (href: string) => {
     if (stairsRef.current && !showLanding && !isLoading) {
       stairsRef.current.playAnimation();
-      // Small delay to let animation start before navigation
       setTimeout(() => {
         router.push(href);
       }, 100);
@@ -67,7 +64,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
   };
 
   if (isLoading) {
-    return null; // or a loading spinner
+    return null;
   }
 
   if (showLanding) {

@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { usePathname } from 'next/navigation'
-import { useRef, forwardRef, useImperativeHandle } from 'react'
+import { useRef, forwardRef, useImperativeHandle, useEffect } from 'react'
 
 interface StairsProps {
     children: React.ReactNode;
@@ -21,7 +21,7 @@ const Stairs = forwardRef<StairsRef, StairsProps>((props, ref) => {
     const playAnimation = () => {
         const tl = gsap.timeline()
         tl.to(stairParentRef.current, {
-            display: 'block',
+            display: 'flex', 
         })
         tl.from('.stair', {
             height: 0,
@@ -53,14 +53,15 @@ const Stairs = forwardRef<StairsRef, StairsProps>((props, ref) => {
         playAnimation
     }));
 
-    useGSAP(function () {
-        playAnimation();
-    }, [currentPath])
-
+    useEffect(() => {
+        if (stairParentRef.current) {
+            gsap.set(stairParentRef.current, { display: 'none' });
+        }
+    }, []);
 
     return (
         <div>
-            <div ref={stairParentRef} className='h-screen w-full fixed z-20 top-0'>
+            <div ref={stairParentRef} className='h-screen w-full fixed z-20 top-0 hidden'>
                 <div className='h-full w-full flex'>
                     <div className='stair h-full w-1/5 bg-gray-800'></div>
                     <div className='stair h-full w-1/5 bg-[#253248]'></div>

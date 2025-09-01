@@ -7,17 +7,18 @@ import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
 import { StairsRef } from '@/components/animation/Stairs';
+import { useStairsNavigation } from '@/hooks/useStairsNavigation';
 
 interface HeaderProps {
   stairsRef: React.RefObject<StairsRef | null>;
-  triggerStairsAnimation?: () => void; // Made optional since it's not used
+  triggerStairsAnimation?: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ stairsRef }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const pathname = usePathname();
-  const router = useRouter();
+  const { navigateWithStairs } = useStairsNavigation();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -44,19 +45,10 @@ const Header: React.FC<HeaderProps> = ({ stairsRef }) => {
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    
-    // If we're already on the target page, don't animate
+
     if (pathname === href) return;
-    
-    // Play stairs animation
-    if (stairsRef.current) {
-      stairsRef.current.playAnimation();
-    }
-    
-    // Navigate after animation delay
-    setTimeout(() => {
-      router.push(href);
-    }, 1000);
+
+    navigateWithStairs(href);
   };
 
   return (
