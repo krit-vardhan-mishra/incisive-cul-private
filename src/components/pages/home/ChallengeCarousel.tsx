@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { textVariants } from '@/types/animations';
 
-const ChallengeCarousel = ({ textVariants }: any) => {
+const ChallengeCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const challenges = [
@@ -230,7 +231,7 @@ const ChallengeCarousel = ({ textVariants }: any) => {
             </motion.div>
 
             {/* Auto-progress Bar */}
-            <motion.div
+             <motion.div
                 variants={textVariants}
                 className="mt-6 w-full max-w-md mx-auto"
             >
@@ -242,7 +243,6 @@ const ChallengeCarousel = ({ textVariants }: any) => {
                         transition={{
                             duration: 4,
                             ease: "linear",
-                            repeat: Infinity,
                         }}
                         key={currentIndex}
                     />

@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SectionProps } from '@/types/animations';
+import { staggerContainer, textVariants } from '@/types/animations';
 
-const IntroductionSection: React.FC<SectionProps> = ({ textVariants, staggerContainer }) => {
+const IntroductionSection = () => {
   return (
     <section className="py-16 lg:py-24">
       <div className="container mx-auto px-6">

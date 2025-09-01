@@ -3,9 +3,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useStairsNavigation } from '@/hooks/useStairsNavigation';
-import { SectionProps } from '@/types/animations';
+import { staggerContainer, textVariants } from '@/types/animations';
 
-const WhyWeExistSection: React.FC<SectionProps> = ({ textVariants, staggerContainer }) => {
+const WhyWeExistSection = () => {
   const { navigateWithStairs } = useStairsNavigation();
   return (
     <section className="relative h-auto md:h-screen flex flex-col md:flex-row items-center justify-start p-0">

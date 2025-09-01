@@ -10,26 +10,6 @@ import IntegratedJourneySection from "./sections/IntegratedJourneySection";
 import BeIncisiveSection from "./sections/BeIncisiveSection";
 
 const HeroSection: React.FC = () => {
-    const textVariants = {
-        initial: { opacity: 0, y: 50 },
-        whileInView: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.8,
-                ease: easeInOut,
-            },
-        },
-    };
-
-    const staggerContainer = {
-        initial: {},
-        whileInView: {
-            transition: {
-                staggerChildren: 0.2,
-            },
-        },
-    };
 
     return (
         <motion.div
@@ -39,25 +19,25 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.5 }}
         >
             {/* Introduction Section */}
-            <IntroductionSection textVariants={textVariants} staggerContainer={staggerContainer} />
+            <IntroductionSection />
 
             {/* Why We Exist Section */}
-            <WhyWeExistSection textVariants={textVariants} staggerContainer={staggerContainer} />
+            <WhyWeExistSection />
 
             {/* What Makes Us Different */}
-            <WhatMakesUsDifferentSection textVariants={textVariants} staggerContainer={staggerContainer} />
+            <WhatMakesUsDifferentSection />
 
             {/* Challenge Your Mind */}
-            <ChallengeCarousel textVariants={textVariants} />
+            <ChallengeCarousel />
 
             {/* Learning Verticals */}
-            <LearningVerticalsSection textVariants={textVariants} staggerContainer={staggerContainer} />
+            <LearningVerticalsSection />
 
             {/* Integrated Journey Section */}
-            <IntegratedJourneySection textVariants={textVariants} staggerContainer={staggerContainer} />
+            <IntegratedJourneySection />
 
             {/* Be Incisive */}
-            <BeIncisiveSection textVariants={textVariants} staggerContainer={staggerContainer} />
+            <BeIncisiveSection />
         </motion.div>
     );
 };

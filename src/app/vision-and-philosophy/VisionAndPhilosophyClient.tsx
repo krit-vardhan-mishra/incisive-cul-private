@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, Variants, useScroll, useTransform } from 'framer-motion';
+import { useStairsNavigation } from '@/hooks/useStairsNavigation';
 
 const textVariants: Variants = {
     initial: {
@@ -51,6 +52,8 @@ export default function VisionAndPhilosophyClient() {
 
     // Animate the opacity of the main section based on scroll progress
     const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+
+    const { navigateWithStairs } = useStairsNavigation();
 
     return (
         <div className="font-sans">
@@ -104,7 +107,7 @@ export default function VisionAndPhilosophyClient() {
                             </p>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             variants={textVariants}
                             className="bg-gradient-to-br from-indigo-900/30 to-purple-900/30 p-10 rounded-3xl border border-indigo-500/30"
                         >
@@ -155,7 +158,7 @@ export default function VisionAndPhilosophyClient() {
                             </div>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             variants={textVariants}
                             className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 p-8 rounded-2xl border border-blue-500/20"
                         >
@@ -229,13 +232,13 @@ export default function VisionAndPhilosophyClient() {
                     className="mb-20"
                 >
                     <div className="text-center mb-16">
-                        <motion.h2 
+                        <motion.h2
                             variants={textVariants}
                             className="text-4xl md:text-5xl font-bold mb-8 text-white"
                         >
                             Our <span className="text-blue-400">Vision</span>
                         </motion.h2>
-                        <motion.p 
+                        <motion.p
                             variants={textVariants}
                             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
                         >
@@ -347,7 +350,7 @@ export default function VisionAndPhilosophyClient() {
                                         color: "blue"
                                     },
                                     {
-                                        step: "02", 
+                                        step: "02",
                                         title: "Deconstruction",
                                         description: "Carefully examining the origins and validity of these patterns through guided inquiry and reflection.",
                                         color: "purple"
@@ -464,7 +467,7 @@ export default function VisionAndPhilosophyClient() {
                             </h2>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             variants={textVariants}
                             className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 p-10 rounded-3xl border border-gray-600"
                         >
@@ -501,21 +504,21 @@ export default function VisionAndPhilosophyClient() {
                     className="mb-20"
                 >
                     <div className="max-w-5xl mx-auto text-center">
-                        <motion.h2 
+                        <motion.h2
                             variants={textVariants}
                             className="text-4xl md:text-5xl font-bold mb-8 text-white"
                         >
                             Looking <span className="text-blue-400">Forward</span>
                         </motion.h2>
-                        
-                        <motion.div 
+
+                        <motion.div
                             variants={textVariants}
                             className="bg-gradient-to-br from-indigo-900/40 to-purple-900/40 p-10 rounded-3xl border border-indigo-500/40"
                         >
                             <p className="text-xl text-gray-300 leading-relaxed mb-8">
-                                We envision a future where our Center for Unlearning and Learning becomes a catalyst for global transformation—where the skills of conscious unlearning become as fundamental as reading and writing.
+                                We envision a future where our Center for Unlearning and Learning becomes a catalyst for global transformation where the skills of conscious unlearning become as fundamental as reading and writing.
                             </p>
-                            
+
                             <div className="grid md:grid-cols-3 gap-8 mt-12">
                                 <div className="text-center">
                                     <div className="text-3xl font-bold text-blue-400 mb-2">10,000+</div>
@@ -542,7 +545,7 @@ export default function VisionAndPhilosophyClient() {
                     viewport={{ margin: '0px 0px -200px 0px' }}
                     className="text-center py-16"
                 >
-                    <motion.div 
+                    <motion.div
                         variants={textVariants}
                         className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-12 rounded-3xl border border-blue-500/30"
                     >
@@ -552,13 +555,14 @@ export default function VisionAndPhilosophyClient() {
                         <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
                             Together, we can challenge the status quo, embrace uncertainty as opportunity, and create meaningful change that ripples through generations. The future belongs to those who dare to unlearn.
                         </p>
-                        <motion.div 
+                        <motion.button
+                            onClick={() => navigateWithStairs('/contact')}
                             variants={textVariants}
-                            className="inline-flex items-center gap-2 text-blue-400 font-semibold"
+                            className="inline-flex items-center gap-2 text-blue-400 font-semibold cursor-pointer hover:text-blue-300 transition-colors"
                         >
-                            <span>Be part of the transformation</span>
+                            <span className='hover:underline'>Be part of the transformation</span>
                             <span className="text-2xl">→</span>
-                        </motion.div>
+                        </motion.button>
                     </motion.div>
                 </motion.section>
             </div>
@@ -581,7 +585,7 @@ export default function VisionAndPhilosophyClient() {
                         Reach out to us to take the first step toward transformation.
                     </p>
                     <button
-                        onClick={() => (window.location.href = '/contact')}
+                        onClick={() => (window.location.href = '/learning-verticals')}
                         className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:transform hover:scale-105">
                         Explore Incisive-Cul
                     </button>

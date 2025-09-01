@@ -3,13 +3,9 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useStairsNavigation } from '@/hooks/useStairsNavigation';
+import { staggerContainer, textVariants } from '@/types/animations';
 
-interface IntegratedJourneySectionProps {
-  textVariants: any;
-  staggerContainer: any;
-}
-
-const IntegratedJourneySection: React.FC<IntegratedJourneySectionProps> = ({ textVariants, staggerContainer }) => {
+const IntegratedJourneySection = () => {
   const { navigateWithStairs } = useStairsNavigation();
     const [selectedItem, setSelectedItem] = useState<{
         title: string;
@@ -25,22 +21,22 @@ const IntegratedJourneySection: React.FC<IntegratedJourneySectionProps> = ({ tex
         {
             title: "Learning with a purpose",
             content: "Incisive has been conceptualized as a holistic skill development centre - whether your goals are career-driven or curiosity-led, we aim to empower you with the right tools and effective techniques to move forward with purpose and enjoy the process of understanding.",
-            image: "/images/about-4.png"
+            image: "https://plus.unsplash.com/premium_photo-1677567996070-68fa4181775a?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             title: "Collaborative Learning",
             content: "At Incisive, we believe in learning without borders. We believe in classroom sessions as a dynamic space to explore ideas seriously, connect with others who care about the art of thinking, and build the kind of understanding that helps in both life and work.",
-            image: "/images/about-2.jpg"
+            image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             title: "Public Speaking & Interview Preparation",
             content: "Focused on developing skills in speech/interview preparation, delivery techniques, effective audience engagement strategies to build your communication confidence and leadership presence.",
-            image: "/images/about-3.jpg"
+            image: "https://images.unsplash.com/photo-1709377274134-94ff067f4d0c?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             title: "Mentoring & Guided Learning",
             content: "At Incisive, we adopt a learner-centric approach to navigate through the complexities of today's educational material, entrance examination preparations and personality development.",
-            image: "/images/about-1.jpg"
+            image: "/images/about-4.jpg"
         },
     ];
 
