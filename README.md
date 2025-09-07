@@ -128,10 +128,7 @@ Custom configuration includes:
 ## 🚀 Deployment
 
 The project is optimized for deployment on:
-- **Vercel** (recommended)
-- **Netlify**
-- **AWS Amplify**
-- **Traditional hosting**
+- **Vercel**
 
 See `DEPLOYMENT.md` for detailed deployment instructions.
 
