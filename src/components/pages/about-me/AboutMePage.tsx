@@ -109,11 +109,8 @@ export default function AboutMePage() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
                     >
-                        <motion.video
-                            autoPlay
-                            loop
-                            muted
-                            src="/speech.mp4"
+                        <motion.img
+                            src="/images/abhishek_sir.jpg"
                             className="object-cover rounded-lg shadow-lg w-full max-w-md h-auto"
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}

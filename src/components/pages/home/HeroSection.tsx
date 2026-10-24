@@ -7,6 +7,7 @@ import WhyWeExistSection from "./sections/WhyWeExistSection";
 import WhatMakesUsDifferentSection from "./sections/WhatMakesUsDifferentSection";
 import LearningVerticalsSection from "./sections/LearningVerticalsSection";
 import IntegratedJourneySection from "./sections/IntegratedJourneySection";
+import WhoCanJoinSection from "./sections/WhoCanJoinSection";
 import BeIncisiveSection from "./sections/BeIncisiveSection";
 
 const HeroSection: React.FC = () => {
@@ -35,6 +36,9 @@ const HeroSection: React.FC = () => {
 
             {/* Integrated Journey Section */}
             <IntegratedJourneySection />
+
+            {/* Who Can Join INCISIVE? */}
+            <WhoCanJoinSection />
 
             {/* Be Incisive */}
             <BeIncisiveSection />

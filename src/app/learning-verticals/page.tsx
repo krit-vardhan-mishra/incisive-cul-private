@@ -1,10 +1,10 @@
 'use client';
 
-import type { Metadata } from "next";
 import { motion, easeOut, easeInOut } from "framer-motion";
 import { learningVerticals } from "@/data/learningVerticals";
 import { VERTICALS_SECTION_TITLE } from "@/data/verticalsConstants";
-import { linearGradient } from "framer-motion/client";
+import PhaansFeatureCard from "@/components/pages/home/sections/PhaansFeatureCard";
+import { useStairsNavigation } from "@/hooks/useStairsNavigation";
 
 // Animation variants
 const fadeInUp = {
@@ -72,6 +72,8 @@ const listItemVariants = {
 };
 
 export default function LearningVerticalsPage() {
+    const { navigateWithStairs } = useStairsNavigation();
+
     return (
         <div className="min-h-screen bg-gray-900 text-white px-6 py-12">
             <div className="max-w-6xl mx-auto">
@@ -201,6 +203,9 @@ export default function LearningVerticalsPage() {
                     </div>
                 </motion.section>
 
+                {/* Phaans Experiential & Community Feature */}
+                <PhaansFeatureCard className="mb-20" />
+
                 {/* Call to Action Section */}
                 <motion.section
                     className="text-center"
@@ -231,6 +236,7 @@ export default function LearningVerticalsPage() {
                             </motion.p>
 
                             <motion.button
+                                onClick={() => navigateWithStairs('/contact')}
                                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 relative overflow-hidden"
                                 variants={fadeInUp}
                                 transition={{ delay: 0.6 }}

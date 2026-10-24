@@ -15,3 +15,8 @@ export const VERTICALS_VIEWPORT_MARGIN = "0px 0px -200px 0px";
 
 // Route constants
 export const LEARNING_VERTICALS_ROUTE = "/learning-verticals";
+
+// Phaans Constants
+export const PHAANS_TITLE = "Phaans by INCISIVE";
+export const PHAANS_DESCRIPTOR = "Community, Culture, Creativity and Connection";
+export const PHAANS_INSTAGRAM_URL = "https://www.instagram.com/phaans_by_incisive/";

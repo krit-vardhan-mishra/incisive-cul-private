@@ -17,12 +17,14 @@ import {
   LEARNING_VERTICALS_ROUTE
 } from '@/data/verticalsConstants';
 
+import PhaansFeatureCard from './PhaansFeatureCard';
+
 const LearningVerticalsSection = () => {
   const { navigateWithStairs } = useStairsNavigation();
 
   return (
     <section className={VERTICALS_SECTION_CLASSES}>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between items-center mb-4 sm:mb-0">
         <h1 className={VERTICALS_TITLE_CLASSES}>
           {VERTICALS_SECTION_TITLE}
         </h1>
@@ -48,6 +50,9 @@ const LearningVerticalsSection = () => {
           <VerticalsCard key={idx} title={vertical.title} content={vertical.content} textVariants={textVariants} />
         ))}
       </motion.div>
+
+      {/* Experiential & Community Feature: Phaans by INCISIVE */}
+      <PhaansFeatureCard />
     </section>
   );
 };
