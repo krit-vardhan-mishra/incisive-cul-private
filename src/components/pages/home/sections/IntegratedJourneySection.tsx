@@ -1,12 +1,19 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useStairsNavigation } from '@/hooks/useStairsNavigation';
 import { staggerContainer, textVariants } from '@/types/animations';
 
 const IntegratedJourneySection = () => {
   const { navigateWithStairs } = useStairsNavigation();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    navigateWithStairs(href);
+  };
     const [selectedItem, setSelectedItem] = useState<{
         title: string;
         content: string;
@@ -90,12 +97,12 @@ const IntegratedJourneySection = () => {
                             className="space-y-8"
                         >
                             <div className="text-center">
-                                <motion.h1
+                                <motion.h2
                                     variants={textVariants}
                                     className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"
                                 >
                                     An Integrated Learning Journey
-                                </motion.h1>
+                                </motion.h2>
                                 <motion.p
                                     variants={textVariants}
                                     className="text-gray-300 text-sm px-4"
@@ -188,26 +195,27 @@ const IntegratedJourneySection = () => {
                                 }}
                                 className="flex flex-col justify-center h-full p-12"
                             >
-                                <motion.h1
+                                <motion.h2
                                     variants={textVariants}
                                     className="text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"
                                 >
                                     An Integrated Learning Journey
-                                </motion.h1>
+                                </motion.h2>
                                 <motion.p
                                     variants={textVariants}
                                     className="text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl"
                                 >
                                     As an educator, I believe in helping you succeed in your field of interest by helping you augment domain knowledge from institutional curriculum, hone your professional skills and shape your personality to reach your goals.
                                 </motion.p>
-                                <motion.button
-                                    onClick={() => navigateWithStairs('/about-me')}
-                                    whileHover={{ scale: 1.05 }}
-                                    variants={textVariants}
-                                    className="mt-6 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg w-fit"
-                                >
-                                    Learn More
-                                </motion.button>
+                                <motion.div whileHover={{ scale: 1.05 }} variants={textVariants} className="mt-6 w-fit">
+                                    <Link
+                                        href="/about-me"
+                                        onClick={(e) => handleNavClick(e, '/about-me')}
+                                        className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                    >
+                                        Learn More About My Journey
+                                    </Link>
+                                </motion.div>
                             </motion.div>
                         </motion.div>
 

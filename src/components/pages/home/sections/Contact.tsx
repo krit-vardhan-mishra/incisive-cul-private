@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { CONTACT_INFO } from '@/data/contactConstants';
 
 const Contact = () => {
     return (
@@ -23,16 +24,16 @@ const Contact = () => {
             </div>
             <div className='w-1/2 flex-col'>
                 <span className='font-bold text-2xl'>Office Hours</span>
-                <span className='space-between'><span className='font-mono'>Mon - Fri</span> 4:00 PM - 7:15 PM</span>
+                <span className='space-between'><span className='font-mono'>Mon - Fri</span> {CONTACT_INFO.officeHours.weekdays}</span>
                 <span className='space-between'>
-                    <span className='font-mono'>Sat - Sun</span> Closed
+                    <span className='font-mono'>Sat - Sun</span> {CONTACT_INFO.officeHours.weekends}
                 </span>
 
                 <span>Contact:</span>
-                <span className='font-mono'>Telephone: (123) 456-7890</span>
-                <span className='font-mono'>Email: info@example.com</span>
-                <span className='font-mono'>Whatsapp: https://wa.me/1234567890</span>
-                <span className='font-mono'>Address: 123 Main St, City, Country</span>
+                <span className='font-mono'>Telephone: {CONTACT_INFO.phonePrimary}</span>
+                <span className='font-mono'>Email: {CONTACT_INFO.emailOfficial}</span>
+                <span className='font-mono'>Whatsapp: {CONTACT_INFO.whatsappUrl}</span>
+                <span className='font-mono'>Address: {CONTACT_INFO.addressFull}</span>
             </div>
         </div>
     )

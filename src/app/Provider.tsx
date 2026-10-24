@@ -11,25 +11,29 @@ import { NavigationContext } from "@/hooks/useStairsNavigation";
 export default function Provider({ children }: { children: React.ReactNode }) {
   const stairsRef = useRef<StairsRef>(null);
   const [showLanding, setShowLanding] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [currentPath, setCurrentPath] = useState('');
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
-    const hasSeenLanding = sessionStorage.getItem('hasSeenLanding');
-    if (!hasSeenLanding) {
-      setShowLanding(true);
+    // Only present the intro landing animation on the homepage, and only if not yet seen in session
+    if (pathname === '/') {
+      try {
+        const hasSeenLanding = sessionStorage.getItem('hasSeenLanding');
+        if (!hasSeenLanding) {
+          setShowLanding(true);
+        }
+      } catch {
+        // Silently continue if sessionStorage is disabled or unavailable
+      }
     }
-    setIsLoading(false);
     setCurrentPath(pathname);
   }, [pathname]);
 
   useEffect(() => {
     if (currentPath &&
         currentPath !== pathname &&
-        !showLanding &&
-        !isLoading) {
+        !showLanding) {
 
       const timer = setTimeout(() => {
         if (stairsRef.current) {
@@ -41,19 +45,25 @@ export default function Provider({ children }: { children: React.ReactNode }) {
 
       return () => clearTimeout(timer);
     }
-  }, [pathname, currentPath, showLanding, isLoading]);  const handleLandingComplete = () => {
-    sessionStorage.setItem('hasSeenLanding', 'true');
+  }, [pathname, currentPath, showLanding]);
+
+  const handleLandingComplete = () => {
+    try {
+      sessionStorage.setItem('hasSeenLanding', 'true');
+    } catch {
+      // Ignore storage errors in restricted/incognito environments
+    }
     setShowLanding(false);
   };
 
   const triggerStairsAnimation = () => {
-    if (stairsRef.current && !showLanding && !isLoading) {
+    if (stairsRef.current && !showLanding) {
       stairsRef.current.playAnimation();
     }
   };
 
   const navigateWithStairs = (href: string) => {
-    if (stairsRef.current && !showLanding && !isLoading) {
+    if (stairsRef.current && !showLanding) {
       stairsRef.current.playAnimation();
       setTimeout(() => {
         router.push(href);
@@ -63,23 +73,18 @@ export default function Provider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  if (isLoading) {
-    return null;
-  }
-
-  if (showLanding) {
-    return <LandingPage onAnimationComplete={handleLandingComplete} />;
-  }
-
   return (
     <NavigationContext.Provider value={{ navigateWithStairs }}>
       <Stairs ref={stairsRef}>
         <Header stairsRef={stairsRef} triggerStairsAnimation={triggerStairsAnimation} />
-        <main>
+        <main id="main-content">
           {children}
         </main>
         <Footer />
       </Stairs>
+      {showLanding && (
+        <LandingPage onAnimationComplete={handleLandingComplete} />
+      )}
     </NavigationContext.Provider>
   );
 }

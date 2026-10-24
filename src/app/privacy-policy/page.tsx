@@ -2,8 +2,8 @@ import React from 'react';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | Incisive-Cul",
-    description: "Read our privacy policy to understand how we protect and handle your personal information.",
+    title: "Privacy Policy",
+    description: "Privacy policy and data handling practices for visitors and students of INCISIVE – Centre for Unlearning and Learning.",
 };
 
 const PrivacyPolicyPage = () => {

@@ -24,11 +24,11 @@ const IntroductionSection = () => {
 
           <motion.h1
             variants={textVariants}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-white"
           >
-            Our Philosophy at{' '}
-            <span className="text-transparent bg-clip-text bg-blue-400">
-              INCISIVE
+            INCISIVE –{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+              Centre for Unlearning and Learning
             </span>
           </motion.h1>
 

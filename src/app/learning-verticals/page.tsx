@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion, easeOut, easeInOut } from "framer-motion";
 import { learningVerticals } from "@/data/learningVerticals";
 import { VERTICALS_SECTION_TITLE } from "@/data/verticalsConstants";
@@ -74,6 +75,12 @@ const listItemVariants = {
 export default function LearningVerticalsPage() {
     const { navigateWithStairs } = useStairsNavigation();
 
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        navigateWithStairs(href);
+    };
+
     return (
         <div className="min-h-screen bg-gray-900 text-white px-6 py-12">
             <div className="max-w-6xl mx-auto">
@@ -85,45 +92,37 @@ export default function LearningVerticalsPage() {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
                 >
-                    <motion.h2
-                        className="text-2xl md:text-3xl font-semibold mb-4 text-gray-200"
-                        variants={fadeInUp}
-                    >
-                        Guiding your quest for knowledge
-                    </motion.h2>
-
-                    <motion.p
-                        className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8"
-                        variants={fadeInUp}
-                        transition={{ delay: 0.2 }}
-                    >
-                        As an educator, I believe in helping you succeed in your field of interest by helping you augment domain knowledge from institutional curriculum, hone your professional skills and shape your personality to reach your goals. I have five defined Verticals for specialized skill development. As a learner, you are free to choose from the five verticals suitable for your needs for the best possible learning outcome.
-                    </motion.p>
-
-                    <motion.div
-                        className="w-24 h-1 bg-blue-400 mx-auto mb-8 rounded-full"
-                        variants={fadeInUp}
-                        transition={{ delay: 0.4 }}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: 96 }}
-                        viewport={{ once: true }}
-                    />
-
                     <motion.h1
-                        className="text-5xl md:text-6xl font-bold mb-8"
+                        className="text-5xl md:text-6xl font-bold mb-6"
                         variants={fadeInUp}
-                        transition={{ delay: 0.6 }}
                     >
                         Learning <span className="text-blue-400">Verticals</span>
                     </motion.h1>
 
                     <motion.p
-                        className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
+                        className="text-2xl md:text-3xl font-semibold mb-4 text-gray-200"
                         variants={fadeInUp}
-                        transition={{ delay: 0.8 }}
+                        transition={{ delay: 0.2 }}
                     >
                         {VERTICALS_SECTION_TITLE}
                     </motion.p>
+
+                    <motion.p
+                        className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8"
+                        variants={fadeInUp}
+                        transition={{ delay: 0.4 }}
+                    >
+                        As an educator, I believe in helping you succeed in your field of interest by helping you augment domain knowledge from institutional curriculum, hone your professional skills and shape your personality to reach your goals. I have five defined Verticals for specialized skill development. As a learner, you are free to choose from the five verticals suitable for your needs for the best possible learning outcome.
+                    </motion.p>
+
+                    <motion.div
+                        className="w-24 h-1 bg-blue-400 mx-auto rounded-full"
+                        variants={fadeInUp}
+                        transition={{ delay: 0.6 }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: 96 }}
+                        viewport={{ once: true }}
+                    />
                 </motion.section>
 
                 {/* Verticals Section */}
@@ -235,9 +234,7 @@ export default function LearningVerticalsPage() {
                                 Join us in exploring these diverse learning paths and unlock your full potential.
                             </motion.p>
 
-                            <motion.button
-                                onClick={() => navigateWithStairs('/contact')}
-                                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 relative overflow-hidden"
+                            <motion.div
                                 variants={fadeInUp}
                                 transition={{ delay: 0.6 }}
                                 whileHover={{
@@ -245,13 +242,16 @@ export default function LearningVerticalsPage() {
                                     boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
                                 }}
                                 whileTap={{ scale: 0.95 }}
+                                className="inline-block"
                             >
-                                <motion.div
-                                    className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 hover:opacity-20 transition-opacity duration-300"
-                                    whileHover={{ opacity: 0.2 }}
-                                />
-                                <span className="relative z-10">Get Started</span>
-                            </motion.button>
+                                <Link
+                                    href="/contact"
+                                    onClick={(e) => handleNavClick(e, '/contact')}
+                                    className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 relative overflow-hidden"
+                                >
+                                    <span className="relative z-10">Get in Touch</span>
+                                </Link>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </motion.section>

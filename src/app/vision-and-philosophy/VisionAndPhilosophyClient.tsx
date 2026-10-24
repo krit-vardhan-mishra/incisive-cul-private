@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { motion, Variants, useScroll, useTransform } from 'framer-motion';
 import { useStairsNavigation } from '@/hooks/useStairsNavigation';
 
@@ -54,6 +56,12 @@ export default function VisionAndPhilosophyClient() {
     const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
     const { navigateWithStairs } = useStairsNavigation();
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        navigateWithStairs(href);
+    };
 
     return (
         <div className="font-sans">
@@ -555,24 +563,28 @@ export default function VisionAndPhilosophyClient() {
                         <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
                             Together, we can challenge the status quo, embrace uncertainty as opportunity, and create meaningful change that ripples through generations. The future belongs to those who dare to unlearn.
                         </p>
-                        <motion.button
-                            onClick={() => navigateWithStairs('/contact')}
-                            variants={textVariants}
-                            className="inline-flex items-center gap-2 text-blue-400 font-semibold cursor-pointer hover:text-blue-300 transition-colors"
-                        >
-                            <span className='hover:underline'>Be part of the transformation</span>
-                            <span className="text-2xl">→</span>
-                        </motion.button>
+                        <motion.div variants={textVariants} className="inline-block">
+                            <Link
+                                href="/contact"
+                                onClick={(e) => handleNavClick(e, '/contact')}
+                                className="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 transition-colors"
+                            >
+                                <span className='hover:underline'>Be part of the transformation</span>
+                                <span className="text-2xl" aria-hidden="true">→</span>
+                            </Link>
+                        </motion.div>
                     </motion.div>
                 </motion.section>
             </div>
 
             {/* Call to Action Section */}
             <section className="relative h-[400px] rounded-lg overflow-hidden shadow-lg">
-                <img
+                <Image
                     src="/images/image.png"
-                    alt="Vision and Philosophy - Center for Unlearning and Learning"
-                    className="object-cover h-full w-full"
+                    alt="Vision and Philosophy - INCISIVE Centre for Unlearning and Learning"
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center hover:bg-black/50 p-6 transition-all duration-300 bg-black/70">
                     <h2 className="text-2xl md:text-3xl font-semibold mb-4">
@@ -584,11 +596,12 @@ export default function VisionAndPhilosophyClient() {
                     <p className="text-lg mb-6">
                         Reach out to us to take the first step toward transformation.
                     </p>
-                    <button
-                        onClick={() => (window.location.href = '/learning-verticals')}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:transform hover:scale-105">
+                    <Link
+                        href="/learning-verticals"
+                        onClick={(e) => handleNavClick(e, '/learning-verticals')}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:transform hover:scale-105 inline-block">
                         Explore Incisive-Cul
-                    </button>
+                    </Link>
                 </div>
             </section>
         </div>

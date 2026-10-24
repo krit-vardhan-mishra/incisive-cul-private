@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ stairsRef }) => {
           onClick={(e) => handleLinkClick(e, '/')}
           className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
         >
-          <Image src="/images/logo.png" alt="Logo" width={40} height={40} />
+          <Image src="/images/logo.png" alt="INCISIVE – Centre for Unlearning and Learning Logo" width={40} height={40} />
           <span className="text-xl md:text-2xl font-bold text-white">Incisive-Cul</span>
         </Link>
 

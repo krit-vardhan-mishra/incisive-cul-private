@@ -2,8 +2,8 @@ import React from 'react';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Legal Notice | Incisive-Cul",
-    description: "Essential legal information regarding the use of our website and services.",
+    title: "Legal Notice",
+    description: "Official legal notice and operational information for INCISIVE – Centre for Unlearning and Learning.",
 };
 
 const LegalNotice = () => {
@@ -68,10 +68,10 @@ const LegalNotice = () => {
                         <p className="text-gray-300 leading-relaxed">
                             For any inquiries, please contact us at:
                             <a
-                                href="mailto:contact@yourcompany.com"
+                                href="mailto:incisive-cul@gmail.com"
                                 className="text-blue-400 hover:text-blue-300 ml-2 underline decoration-2 underline-offset-2 transition-colors duration-300 font-semibold"
                             >
-                                Incisive-cul@gmail.com
+                                incisive-cul@gmail.com
                             </a>
                         </p>
                     </div>

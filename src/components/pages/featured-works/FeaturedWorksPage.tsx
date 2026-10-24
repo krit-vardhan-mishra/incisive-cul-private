@@ -6,11 +6,11 @@ import AppointmentBooking from "../about-me/AppointmentBooking";
 
 export default function FeaturedWorksPage() {
     const links = [
-        { href: 'https://www.instagram.com/incisive_cul/', icon: InstagramIcon },
-        { href: 'https://www.linkedin.com/company/incisive-centre-for-unlearning-and-learning/', icon: LinkedinIcon },
-        { href: 'https://www.youtube.com/@Incisive-CUL', icon: YoutubeIcon },
-        { href: 'mailto:incisive-cul@gmail.com', icon: MailIcon },
-        { href: 'tel:+919286284370', icon: Phone },
+        { href: 'https://www.instagram.com/incisive_cul/', icon: InstagramIcon, label: 'Follow INCISIVE on Instagram' },
+        { href: 'https://www.linkedin.com/company/incisive-centre-for-unlearning-and-learning/', icon: LinkedinIcon, label: 'Connect with INCISIVE on LinkedIn' },
+        { href: 'https://www.youtube.com/@Incisive-CUL', icon: YoutubeIcon, label: 'Watch INCISIVE on YouTube' },
+        { href: 'mailto:incisive-cul@gmail.com', icon: MailIcon, label: 'Email INCISIVE at incisive-cul@gmail.com' },
+        { href: 'tel:+919286284370', icon: Phone, label: 'Call INCISIVE at +91 92862 84370' },
     ];
 
     const ytLinks = [
@@ -103,6 +103,15 @@ export default function FeaturedWorksPage() {
             {/* Hero Section */}
             <section className="relative py-20 px-6 bg-gray-900">
                 <div className="max-w-7xl mx-auto mt-4 text-center">
+                    <motion.h1
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400"
+                    >
+                        Featured Works & Lectures
+                    </motion.h1>
+
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -273,6 +282,7 @@ export default function FeaturedWorksPage() {
                                         className="w-full h-full rounded-t-xl"
                                         src={`https://www.youtube.com/embed/${getYouTubeId(video.link)}`}
                                         title={video.topic}
+                                        loading="lazy"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
                                     ></iframe>
@@ -309,12 +319,13 @@ export default function FeaturedWorksPage() {
                         <div className="mb-8">
                             <h3 className="text-xl font-semibold mb-6 text-blue-400">Connect With Us</h3>
                             <div className="flex flex-wrap justify-center gap-4">
-                                {links.map(({ href, icon: Icon }, index) => (
+                                {links.map(({ href, icon: Icon, label }, index) => (
                                     <motion.a
                                         key={index}
                                         href={href}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label={label}
                                         className="group"
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
@@ -324,7 +335,7 @@ export default function FeaturedWorksPage() {
                                         whileTap={{ scale: 0.95 }}
                                     >
                                         <div className="p-4 bg-gray-700/50 hover:bg-blue-600/20 border border-gray-600 hover:border-blue-500/50 rounded-xl transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/10">
-                                            <Icon className="w-6 h-6 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" />
+                                            <Icon className="w-6 h-6 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" aria-hidden="true" />
                                         </div>
                                     </motion.a>
                                 ))}

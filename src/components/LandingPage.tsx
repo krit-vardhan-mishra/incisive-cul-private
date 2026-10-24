@@ -66,7 +66,7 @@ export default function LandingPage({ onAnimationComplete }: LandingPageProps) {
             }
             clearTimeout(fallbackTimer);
         };
-    }, [onAnimationComplete, controls]);
+    }, [onAnimationComplete, controls, videoLoaded]);
 
     if (!isAnimating) {
         return null;
@@ -181,6 +181,16 @@ export default function LandingPage({ onAnimationComplete }: LandingPageProps) {
             initial="hidden"
             animate="visible"
         >
+            {/* Skip button for non-blocking user control */}
+            <button
+                type="button"
+                onClick={onAnimationComplete}
+                className="absolute top-6 right-6 z-50 px-4 py-2 text-xs uppercase tracking-wider font-semibold text-gray-200 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all duration-200 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                aria-label="Skip intro animation"
+            >
+                Skip Intro &rarr;
+            </button>
+
             {/* Animated background elements */}
             <motion.div
                 className="absolute inset-0 opacity-20"

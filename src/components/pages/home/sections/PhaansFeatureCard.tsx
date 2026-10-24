@@ -94,6 +94,7 @@ const PhaansFeatureCard: React.FC<PhaansFeatureCardProps> = ({
               href={PHAANS_INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Explore Phaans by INCISIVE on Instagram (opens in a new tab)"
               whileHover={reduceMotion ? undefined : { scale: 1.05 }}
               whileTap={reduceMotion ? undefined : { scale: 0.95 }}
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-3 font-semibold text-blue-600 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400"

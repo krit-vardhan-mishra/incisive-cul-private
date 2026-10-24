@@ -1,20 +1,32 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useStairsNavigation } from '@/hooks/useStairsNavigation';
 import { staggerContainer, textVariants } from '@/types/animations';
 
 const WhyWeExistSection = () => {
   const { navigateWithStairs } = useStairsNavigation();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    navigateWithStairs(href);
+  };
+
   return (
-    <section className="relative h-auto md:h-screen flex flex-col md:flex-row items-center justify-start p-0">
+    <section className="relative h-auto md:h-screen flex flex-col md:flex-row items-center justify-start p-0 overflow-hidden">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/images/image-with-text.jpg"
-          alt="Background with text and illustration"
-          className="object-cover object-center md:object-left w-full h-full"
+          alt="INCISIVE learning philosophy illustration"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 100vw"
+          className="object-cover object-center md:object-left"
         />
         <div className="absolute inset-0 bg-gray-900/60" />
       </div>
@@ -48,14 +60,15 @@ const WhyWeExistSection = () => {
               is for those students who feel this gap and want to do something about it. We aim to bridge this gap by fostering critical thinking, creativity, and real-world problem-solving skills. Our mission is to empower students to not only excel academically but also to thrive in their personal and professional lives.
             </motion.p>
 
-            <motion.button
-              onClick={() => navigateWithStairs('/vision-and-philosophy')}
-              whileHover={{ scale: 1.05 }}
-              variants={textVariants}
-              className="mt-4 inline-block px-6 py-3 text-sm font-semibold text-blue-900 bg-blue-200 rounded-lg shadow-md hover:bg-blue-300 transition duration-200"
-            >
-              Learn more
-            </motion.button>
+            <motion.div variants={textVariants} whileHover={{ scale: 1.05 }} className="mt-4 inline-block">
+              <Link
+                href="/vision-and-philosophy"
+                onClick={(e) => handleNavClick(e, '/vision-and-philosophy')}
+                className="inline-block px-6 py-3 text-sm font-semibold text-blue-900 bg-blue-200 rounded-lg shadow-md hover:bg-blue-300 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                Learn more about our philosophy
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
 

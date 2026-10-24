@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useStairsNavigation } from '@/hooks/useStairsNavigation';
 import { staggerContainer, textVariants } from '@/types/animations';
@@ -14,7 +15,8 @@ const NotFound: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img
           src="/images/image-with-text.jpg"
-          alt="Background"
+          alt=""
+          aria-hidden="true"
           className="object-cover w-full h-full"
         />
         <div className="absolute inset-0 bg-gray-900/70" />
@@ -49,14 +51,18 @@ const NotFound: React.FC = () => {
           Oops! The page you are looking for doesn't exist or has been moved.
         </motion.p>
 
-        <motion.button
-          onClick={() => navigateWithStairs('/')}
-          whileHover={{ scale: 1.05 }}
-          variants={textVariants}
-          className="px-6 py-3 text-sm font-semibold text-blue-900 bg-blue-200 rounded-lg shadow-md hover:bg-blue-300 transition duration-200"
-        >
-          Go to Homepage
-        </motion.button>
+        <motion.div variants={textVariants} whileHover={{ scale: 1.05 }}>
+          <Link
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateWithStairs('/');
+            }}
+            className="inline-block px-6 py-3 text-sm font-semibold text-blue-900 bg-blue-200 rounded-lg shadow-md hover:bg-blue-300 transition duration-200"
+          >
+            Go to Homepage
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );

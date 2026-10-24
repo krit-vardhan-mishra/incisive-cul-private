@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   GraduationCap, 
@@ -34,6 +35,12 @@ const cardVariants = {
 
 const WhoCanJoinSection: React.FC = () => {
   const { navigateWithStairs } = useStairsNavigation();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    navigateWithStairs(href);
+  };
 
   return (
     <section 
@@ -133,14 +140,14 @@ const WhoCanJoinSection: React.FC = () => {
               </div>
 
               {/* Action Link */}
-              <button
-                type="button"
-                onClick={() => navigateWithStairs(category.primaryCtaLink)}
+              <Link
+                href={category.primaryCtaLink}
+                onClick={(e) => handleNavClick(e, category.primaryCtaLink)}
                 className="w-full mt-auto pt-3 pb-2.5 px-4 rounded-lg bg-gray-700/40 hover:bg-blue-600 text-gray-200 hover:text-white text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 group/btn border border-gray-600/40 hover:border-blue-500"
               >
                 <span>{category.primaryCtaText}</span>
                 <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-200" aria-hidden="true" />
-              </button>
+              </Link>
             </motion.article>
           );
         })}
@@ -157,13 +164,13 @@ const WhoCanJoinSection: React.FC = () => {
         <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl">
           {WHO_CAN_JOIN_DATA.bottomBanner.text}
         </p>
-        <button
-          type="button"
-          onClick={() => navigateWithStairs(WHO_CAN_JOIN_DATA.bottomBanner.ctaLink)}
+        <Link
+          href={WHO_CAN_JOIN_DATA.bottomBanner.ctaLink}
+          onClick={(e) => handleNavClick(e, WHO_CAN_JOIN_DATA.bottomBanner.ctaLink)}
           className="whitespace-nowrap px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white text-xs sm:text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex-shrink-0"
         >
           {WHO_CAN_JOIN_DATA.bottomBanner.ctaText}
-        </button>
+        </Link>
       </motion.div>
     </section>
   );

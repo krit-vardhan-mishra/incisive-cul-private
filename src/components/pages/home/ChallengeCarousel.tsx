@@ -1,10 +1,13 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { textVariants } from '@/types/animations';
+import { useStairsNavigation } from '@/hooks/useStairsNavigation';
 
 const ChallengeCarousel = () => {
+    const { navigateWithStairs } = useStairsNavigation();
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const challenges = [
@@ -129,7 +132,7 @@ const ChallengeCarousel = () => {
                                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20 z-10 rounded-tl-xl rounded-br-xl" />
                                 <Image
                                     src={challenges[currentIndex].image}
-                                    alt="Challenge Your Mind"
+                                    alt={`${challenges[currentIndex].subtitle} - ${challenges[currentIndex].text}`}
                                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                                     fill
                                     priority
@@ -192,19 +195,28 @@ const ChallengeCarousel = () => {
                                 </p>
                             </div>
 
-                            <motion.button
+                            <motion.div
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl"
+                                className="inline-block"
                             >
-                                Explore More
-                                <motion.span
-                                    animate={{ x: [0, 5, 0] }}
-                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                <Link
+                                    href="/learning-verticals"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        navigateWithStairs('/learning-verticals');
+                                    }}
+                                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl"
                                 >
-                                    →
-                                </motion.span>
-                            </motion.button>
+                                    Explore More
+                                    <motion.span
+                                        animate={{ x: [0, 5, 0] }}
+                                        transition={{ duration: 1.5, repeat: Infinity }}
+                                    >
+                                        →
+                                    </motion.span>
+                                </Link>
+                            </motion.div>
                         </motion.div>
                     </AnimatePresence>
                 </motion.div>
@@ -215,10 +227,11 @@ const ChallengeCarousel = () => {
                 variants={textVariants}
                 className="flex justify-center mt-12 space-x-4"
             >
-                {challenges.map((_, index) => (
+                {challenges.map((challenge, index) => (
                     <motion.button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
+                        aria-label={`View slide: ${challenge.subtitle}`}
                         className={`w-4 h-4 rounded-full transition-all duration-300 ${
                             index === currentIndex
                                 ? 'bg-gradient-to-r from-blue-400 to-purple-500 scale-125'

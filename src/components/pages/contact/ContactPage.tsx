@@ -430,7 +430,9 @@ const ContactPage = () => {
                                 >
                                     <Phone className="w-4 h-4 text-purple-400 mr-2 flex-shrink-0" />
                                     <span className="font-semibold text-purple-400 mr-2">Phone:</span>
-                                    <span>9289 284 370</span>
+                                    <a href="tel:+919286284370" className="hover:underline hover:text-purple-300 transition-colors">
+                                        +91 92862 84370
+                                    </a>
                                 </motion.p>
                                 <motion.p 
                                     className="text-sm sm:text-base lg:text-lg text-gray-300 flex items-center flex-wrap sm:flex-nowrap"
@@ -439,8 +441,8 @@ const ContactPage = () => {
                                 >
                                     <MailIcon className="w-4 h-4 text-purple-400 mr-2 flex-shrink-0" />
                                     <span className="font-semibold text-purple-400 mr-2">Email:</span>
-                                    <a href="mailto:ricky_is_cool@gmail.com" className="hover:underline hover:text-purple-300 transition-colors break-all sm:break-normal">
-                                        ricky_is_cool@gmail.com
+                                    <a href="mailto:incisive-cul@gmail.com" className="hover:underline hover:text-purple-300 transition-colors break-all sm:break-normal">
+                                        incisive-cul@gmail.com
                                     </a>
                                 </motion.p>
                                 <motion.p 

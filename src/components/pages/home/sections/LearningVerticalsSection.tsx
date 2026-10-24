@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useStairsNavigation } from '@/hooks/useStairsNavigation';
 import VerticalsCard from '../VerticalsCard';
@@ -22,21 +23,28 @@ import PhaansFeatureCard from './PhaansFeatureCard';
 const LearningVerticalsSection = () => {
   const { navigateWithStairs } = useStairsNavigation();
 
-  return (
-    <section className={VERTICALS_SECTION_CLASSES}>
-      <div className="flex flex-row justify-between items-center mb-4 sm:mb-0">
-        <h1 className={VERTICALS_TITLE_CLASSES}>
-          {VERTICALS_SECTION_TITLE}
-        </h1>
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    navigateWithStairs(href);
+  };
 
-        <motion.button
-          onClick={() => navigateWithStairs(LEARNING_VERTICALS_ROUTE)}
-          whileHover={{ scale: 1.05 }}
-          variants={textVariants}
-          className={VERTICALS_BUTTON_CLASSES}
-        >
-          {VERTICALS_LEARN_MORE_BUTTON_TEXT}
-        </motion.button>
+  return (
+    <section className={VERTICALS_SECTION_CLASSES} aria-labelledby="verticals-heading">
+      <div className="flex flex-row justify-between items-center mb-4 sm:mb-0">
+        <h2 id="verticals-heading" className={VERTICALS_TITLE_CLASSES}>
+          {VERTICALS_SECTION_TITLE}
+        </h2>
+
+        <motion.div whileHover={{ scale: 1.05 }} variants={textVariants}>
+          <Link
+            href={LEARNING_VERTICALS_ROUTE}
+            onClick={(e) => handleNavClick(e, LEARNING_VERTICALS_ROUTE)}
+            className={VERTICALS_BUTTON_CLASSES}
+          >
+            {VERTICALS_LEARN_MORE_BUTTON_TEXT}
+          </Link>
+        </motion.div>
       </div>
 
       <motion.div

@@ -4,6 +4,7 @@ import { useStairsNavigation } from "@/hooks/useStairsNavigation";
 import AppointmentBooking from "./AppointmentBooking";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 export default function AboutMePage() {
     const { navigateWithStairs } = useStairsNavigation();
@@ -111,6 +112,7 @@ export default function AboutMePage() {
                     >
                         <motion.img
                             src="/images/abhishek_sir.jpg"
+                            alt="Dr. Abhishek Juneja - Founder and Educator at INCISIVE"
                             className="object-cover rounded-lg shadow-lg w-full max-w-md h-auto"
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}
@@ -139,7 +141,7 @@ export default function AboutMePage() {
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true, margin: "-100px" }}
                     >
-                        <motion.h4
+                        <motion.h2
                             className="text-3xl md:text-4xl font-bold text-white mb-6 relative inline-block"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
@@ -154,7 +156,7 @@ export default function AboutMePage() {
                                 transition={{ duration: 0.8, delay: 0.5 }}
                                 viewport={{ once: true }}
                             />
-                        </motion.h4>
+                        </motion.h2>
                         <motion.p
                             className="text-gray-300 text-lg max-w-3xl mx-auto"
                             initial={{ opacity: 0, y: 20 }}
@@ -199,7 +201,7 @@ export default function AboutMePage() {
                                     </motion.div>
 
                                     {/* Title */}
-                                    <motion.h5
+                                    <motion.h3
                                         className="text-xl font-bold text-white mb-4 text-center group-hover:text-blue-300 transition-colors duration-300"
                                         initial={{ opacity: 0 }}
                                         whileInView={{ opacity: 1 }}
@@ -207,7 +209,7 @@ export default function AboutMePage() {
                                         viewport={{ once: true }}
                                     >
                                         {item.title}
-                                    </motion.h5>
+                                    </motion.h3>
 
                                     {/* Description */}
                                     <motion.p
@@ -306,9 +308,7 @@ export default function AboutMePage() {
                             true knowledge seekers who wish to go beyond accumulating degrees and emerge as
                             thought-leaders in their respective fields of interest.
                         </motion.p>
-                        <motion.button
-                            onClick={() => navigateWithStairs('/contact')}
-                            className="px-8 py-4 text-lg font-semibold text-blue-900 bg-blue-200 rounded-lg shadow-md hover:bg-blue-300 transition duration-200"
+                        <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.8 }}
@@ -316,8 +316,17 @@ export default function AboutMePage() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Find out more about Incisive
-                        </motion.button>
+                            <Link
+                                href="/contact"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    navigateWithStairs('/contact');
+                                }}
+                                className="inline-block px-8 py-4 text-lg font-semibold text-blue-900 bg-blue-200 rounded-lg shadow-md hover:bg-blue-300 transition duration-200"
+                            >
+                                Find out more about Incisive
+                            </Link>
+                        </motion.div>
                     </motion.div>
                 </div>
             </motion.section>
@@ -348,16 +357,24 @@ export default function AboutMePage() {
                         Join us in exploring new paradigms of education and personal development.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button
-                            onClick={() => navigateWithStairs('/featured-works')}
-                            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105">
+                        <Link
+                            href="/featured-works"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                navigateWithStairs('/featured-works');
+                            }}
+                            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 inline-block text-center">
                             Explore Our Work
-                        </button>
-                        <button
-                            onClick={() => navigateWithStairs('/contact')}
-                            className="px-8 py-4 border border-gray-600 hover:border-blue-500 text-gray-300 hover:text-blue-400 font-semibold rounded-lg transition-all duration-300">
+                        </Link>
+                        <Link
+                            href="/contact"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                navigateWithStairs('/contact');
+                            }}
+                            className="px-8 py-4 border border-gray-600 hover:border-blue-500 text-gray-300 hover:text-blue-400 font-semibold rounded-lg transition-all duration-300 inline-block text-center">
                             Get In Touch
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </motion.section>
